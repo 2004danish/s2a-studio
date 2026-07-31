@@ -24,3 +24,71 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========================================
+   CORE RESPONSIVE & CURSOR FIXES
+========================================= */
+html, body {
+  cursor: none !important;
+  /* Added these 3 lines to prevent horizontal scrolling on mobile */
+  overflow-x: hidden;
+  max-width: 100vw;
+  scroll-behavior: smooth; 
+}
+
+/* Ensure interactive elements also hide default cursor */
+a, button, input, textarea, select {
+  cursor: none !important;
+}
+
+/* =========================================
+   UTILITIES
+========================================= */
+
+/* Wireframe Outline Utility */
+.wireframe-text {
+  -webkit-text-stroke: 1px #FAFAFA;
+  color: transparent !important;
+}
+
+.wireframe-text-active {
+  -webkit-text-stroke: 1px #FAFAFA;
+  color: transparent !important;
+}
+
+/* Kinetic Transition Utility */
+.kinetic-wireframe {
+  color: #FAFAFA;
+  -webkit-text-stroke: 1px transparent;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-text-stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-wireframe:hover {
+  color: transparent;
+  -webkit-text-stroke: 1px #FAFAFA;
+}
+
+/* =========================================
+   GLOBAL PREMIUM AESTHETICS
+========================================= */
+
+/* 1. Custom High-End Text Selection */
+::selection {
+  background-color: #FAFAFA;
+  color: #030303;
+}
+::-moz-selection {
+  background-color: #FAFAFA;
+  color: #030303;
+}
+
+/* 2. Faint Architectural Grid Background */
+.bg-cad-grid {
+  background-size: 120px 120px;
+  background-image: 
+    linear-gradient(to right, rgba(250, 250, 250, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(250, 250, 250, 0.02) 1px, transparent 1px);
+  background-position: center top;
+}

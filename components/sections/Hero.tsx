@@ -1,53 +1,156 @@
-"use client"; 
+"use client";
 
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
+// 1. THE IMAGE SEQUENCE
+// Corrected the file names to match exactly what is inside your public/turnkeyworks folder
+const heroImages = [
+  "/hero images/bungalow-kekarav.jpg", 
+  "/turnkeyworks/bungalow-sangali.jpg", // Fixed the typo here!
+  "/turnkeyworks/encore-boutique-resort.jpg",
+  "/turnkeyworks/golf-resort.jpg"
+];
+
 export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const spec1Opacity = useTransform(scrollYProgress, [0.15, 0.25, 0.45, 0.55], [0, 1, 1, 0]);
+  const spec1Y = useTransform(scrollYProgress, [0.15, 0.55], ["10vh", "-10vh"]);
+
+  const spec2Opacity = useTransform(scrollYProgress, [0.6, 0.7, 0.9, 1], [0, 1, 1, 0]);
+  const spec2Y = useTransform(scrollYProgress, [0.6, 1], ["10vh", "-10vh"]);
+
+  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 0]);
+
   return (
-    <section className="relative h-[calc(100vh-6rem)] flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background Image Placeholder with Dark Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <img 
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" 
-          alt="Modern Architectural Design"
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#F5F5F7] text-[#1D1D1F]">
+      
+      {/* 
+        1. THE EXPANDED FRAME 
+        Changed px-12 to px-4 md:px-6. Changed pt-[120px] to pt-[90px].
+        This gives you a massive, immersive "iPad Pro" style edge-to-edge screen!
+      */}
+      <div className="sticky top-0 h-screen w-full flex flex-col pt-[90px] pb-4 px-4 md:px-6 overflow-hidden">
 
-      {/* Animated Text Content */}
-      <div className="relative z-20 text-center px-6 max-w-5xl mx-auto mb-12">
-        <motion.h1 
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6"
-        >
-          Designing the <br className="hidden md:block" /> Future of Spaces.
-        </motion.h1>
+        <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.1)] z-10 border border-[#1D1D1F]/5 bg-[#1D1D1F]">
+          
+          {/* 
+            2. THE ZERO-LAG PRELOAD SLIDESHOW
+            Instead of deleting images, we map through all of them. 
+            The browser downloads them instantly on page load in the background.
+            We just toggle the opacity from 0 to 1 to crossfade smoothly.
+          */}
+          {heroImages.map((src, index) => (
+            <motion.img 
+              key={src}
+              src={src}
+              alt="S2A Architectural Masterpiece" 
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ 
+                opacity: index === currentIndex ? 1 : 0,
+                scale: index === currentIndex ? 1 : 1.05,
+                zIndex: index === currentIndex ? 20 : 10
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          ))}
 
-        <motion.p 
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light"
-        >
-          A premium architectural design and master planning studio dedicated to creating scalable, visionary environments.
-        </motion.p>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 pointer-events-none z-30" />
 
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        >
+          {/* THE FLOATING FAST-TRAVEL CARD */}
           <Link 
             href="/projects" 
-            className="inline-block bg-white text-black px-8 py-4 font-medium hover:bg-gray-200 transition-colors"
+            className="absolute top-6 right-6 md:top-8 md:right-8 z-50 group"
           >
-            Explore Selected Work
+            <div className="backdrop-blur-3xl backdrop-saturate-200 bg-white/10 hover:bg-white/20 border border-white/20 p-2 pr-6 md:pr-8 rounded-full flex items-center gap-4 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-[#1D1D1F] translate-x-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[7px] md:text-[8px] font-mono tracking-[0.2em] text-white/70 uppercase">Explore</span>
+                <span className="text-[9px] md:text-[10px] font-bold tracking-[0.1em] text-white uppercase">All Projects</span>
+              </div>
+            </div>
           </Link>
+
+          {/* THE HUD OVERLAY */}
+          <div className="absolute bottom-8 left-6 md:bottom-10 md:left-10 flex flex-col gap-1 z-50 text-[9px] font-mono tracking-[0.2em] uppercase text-white drop-shadow-md">
+            <span>21.1458° N, 79.0882° E</span>
+            <span className="text-white/70">Master Planning & Architecture</span>
+          </div>
+
+          {/* SCROLL INDICATOR */}
+          <motion.div 
+            style={{ opacity: indicatorOpacity }}
+            className="absolute bottom-8 right-6 md:bottom-10 md:right-10 flex flex-col items-center gap-3 z-50 pointer-events-none drop-shadow-md"
+          >
+            <div className="w-[1px] h-12 bg-white/30 overflow-hidden relative">
+              <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-[scrollDown_1.5s_ease-in-out_infinite]" />
+            </div>
+            <span className="text-[9px] font-mono tracking-[0.2em] uppercase text-white">Scroll</span>
+          </motion.div>
+
+        </div>
+
+        {/* THE SPECIFICATIONS CARDS */}
+        <motion.div 
+          style={{ opacity: spec1Opacity, y: spec1Y }}
+          className="absolute right-6 md:right-24 lg:right-32 top-1/2 -translate-y-1/2 z-30 w-[90%] md:w-[420px]"
+        >
+          <div className="backdrop-blur-2xl backdrop-saturate-150 bg-white/80 p-8 md:p-10 rounded-3xl border border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-4 h-[1px] bg-[#86868B]"></span>
+              <span className="text-[9px] font-mono text-[#86868B] tracking-[0.2em] uppercase">
+                Phase 01 // Conception
+              </span>
+            </div>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-[#1D1D1F] mb-4 leading-tight">
+              Uncompromising Structural Integrity.
+            </h3>
+            <p className="text-xs md:text-sm text-[#1D1D1F]/70 font-light leading-relaxed">
+              We treat space as a tangible material. Every cantilever, every load-bearing wall, and every line of sight is engineered to its absolute purest form.
+            </p>
+          </div>
         </motion.div>
+
+        <motion.div 
+          style={{ opacity: spec2Opacity, y: spec2Y }}
+          className="absolute left-6 md:left-24 lg:left-32 top-1/2 -translate-y-1/2 z-30 w-[90%] md:w-[420px]"
+        >
+          <div className="backdrop-blur-2xl backdrop-saturate-150 bg-white/80 p-8 md:p-10 rounded-3xl border border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-4 h-[1px] bg-[#86868B]"></span>
+              <span className="text-[9px] font-mono text-[#86868B] tracking-[0.2em] uppercase">
+                Phase 02 // Materiality
+              </span>
+            </div>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-[#1D1D1F] mb-4 leading-tight">
+              The Tactile <br/>Experience.
+            </h3>
+            <p className="text-xs md:text-sm text-[#1D1D1F]/70 font-light leading-relaxed">
+              Moving away from sterile surfaces. We embrace board-formed concrete, low-iron glass, and natural travertine that patinas beautifully with time.
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

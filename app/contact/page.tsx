@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ContactPage() {
+  // YOUR EXACT LOGIC - UNTOUCHED
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -30,17 +31,33 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-6 py-24">
-      <div className="max-w-3xl mx-auto">
+    // VISUAL UPGRADE: Transparent background lets the global CAD grid show through
+    <div className="min-h-screen pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto z-20 relative">
+      <div className="max-w-3xl">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-black mb-6">
-            Let's build something extraordinary.
+          {/* Section ID */}
+          <div className="flex items-center gap-4 mb-6">
+            <span className="w-6 h-[1px] bg-[#555555]"></span>
+            <span className="text-[10px] font-mono tracking-widest text-[#555555] uppercase">
+              Initiate Sequence // Contact
+            </span>
+          </div>
+          
+          {/* Kinetic Typography Title */}
+          <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.85] uppercase text-[#FAFAFA] mb-8">
+            <span className="block kinetic-wireframe cursor-pointer">Let's Build</span>
+            <span className="block text-[#666666] hover:wireframe-text-active transition-all duration-500 cursor-pointer">
+              Something
+            </span>
+            <span className="block kinetic-wireframe cursor-pointer">Extraordinary.</span>
           </h1>
-          <p className="text-gray-500 text-lg mb-12 max-w-xl">
+          
+          <p className="text-[#888888] text-sm md:text-base font-medium uppercase tracking-widest border-l border-[#333333] pl-6 max-w-xl">
             Reach out to discuss your next architectural project, request a consultation, or simply learn more about our master planning process.
           </p>
         </motion.div>
@@ -50,61 +67,75 @@ export default function ContactPage() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           onSubmit={handleSubmit} 
-          className="space-y-8"
+          className="space-y-12 relative z-30"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            {/* NAME INPUT */}
+            <div className="space-y-4">
+              <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FAFAFA]">Full Name</label>
               <input
                 id="name"
                 type="text"
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent"
+                className="w-full border-b border-[#333333] py-4 focus:outline-none focus:border-[#FAFAFA] transition-colors bg-transparent text-[#FAFAFA] text-lg rounded-none placeholder:text-[#333333]"
                 placeholder="John Doe"
               />
             </div>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</label>
+
+            {/* EMAIL INPUT */}
+            <div className="space-y-4">
+              <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FAFAFA]">Email Address</label>
               <input
                 id="email"
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent"
+                className="w-full border-b border-[#333333] py-4 focus:outline-none focus:border-[#FAFAFA] transition-colors bg-transparent text-[#FAFAFA] text-lg rounded-none placeholder:text-[#333333]"
                 placeholder="john@example.com"
               />
             </div>
           </div>
           
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium text-gray-700">Project Details</label>
+          {/* MESSAGE INPUT */}
+          <div className="space-y-4">
+            <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FAFAFA]">Project Details</label>
             <textarea
               id="message"
               required
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent resize-none"
+              className="w-full border-b border-[#333333] py-4 focus:outline-none focus:border-[#FAFAFA] transition-colors bg-transparent text-[#FAFAFA] text-lg resize-none rounded-none placeholder:text-[#333333]"
               placeholder="Tell us about your vision, site location, and timeline..."
             />
           </div>
 
+          {/* MONOCHROME HIGH-END BUTTON */}
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="bg-black text-white px-10 py-4 font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group relative w-fit px-12 py-6 bg-transparent border border-[#FAFAFA] text-[#FAFAFA] text-[10px] font-bold uppercase tracking-[0.2em] overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
-            {status === "loading" ? "Sending..." : status === "success" ? "Message Sent" : "Submit Inquiry"}
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-[#030303]">
+              {status === "loading" ? "Transmitting..." : status === "success" ? "Message Secured" : "Submit Inquiry"}
+            </span>
+            <div className="absolute inset-0 w-full h-full bg-[#FAFAFA] scale-x-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 z-0"></div>
           </button>
 
+          {/* STATUS MESSAGES */}
           {status === "error" && (
-            <p className="text-red-500 text-sm mt-4">Something went wrong. Please try again.</p>
+            <p className="text-red-500 text-xs font-mono tracking-widest uppercase mt-4 border-l border-red-500 pl-4">
+              Error // Transmission failed. Please try again.
+            </p>
           )}
           {status === "success" && (
-            <p className="text-green-600 text-sm mt-4">Thank you. We will be in touch shortly.</p>
+            <p className="text-[#FAFAFA] text-xs font-mono tracking-widest uppercase mt-4 border-l border-[#FAFAFA] pl-4">
+              Success // Target acquired. We will be in touch.
+            </p>
           )}
         </motion.form>
       </div>

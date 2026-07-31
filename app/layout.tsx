@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/sections/Navbar";
 import Footer from "../components/sections/Footer";
+import CustomCursor from "../components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* Added bg-cad-grid here to overlay the blueprint lines globally */}
+      <body className={`${inter.className} bg-[#030303] bg-cad-grid text-[#FAFAFA]`}>
+        <CustomCursor />
         <Navbar />
         {children}
         <Footer />

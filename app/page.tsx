@@ -1,23 +1,15 @@
 import Hero from "../components/sections/Hero";
-import FeaturedProject from "../components/sections/FeaturedProject";
-import Philosophy from "../components/sections/Philosophy";
-import SelectedWorks from "../components/sections/SelectedWorks";
-import Process from "../components/sections/Process";
-import Awards from "../components/sections/Awards";
-import Testimonials from "../components/sections/Testimonials";
-import CTA from "../components/sections/CTA";
+// 1. UPDATED IMPORT: Pointing to your newly renamed file
+import TurnkeyWorks from "../components/sections/TurnkeyWorks"; 
+import ThreeDVizTeaser from "../components/sections/ThreeDVizTeaser";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col w-full">
+    <main className="flex flex-col w-full min-h-screen">
       <Hero />
-      <FeaturedProject />
-      <Philosophy />
-      <SelectedWorks />
-      <Process />
-      <Awards />
-      <Testimonials />
-      <CTA />
+      {/* 2. UPDATED COMPONENT TAG */}
+      <TurnkeyWorks />
+      <ThreeDVizTeaser />
     </main>
   );
 }
