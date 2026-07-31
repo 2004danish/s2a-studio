@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 
 const turnkeyProjects = [
   {
@@ -15,7 +15,6 @@ const turnkeyProjects = [
     id: "02",
     title: "ENCORE BOUTIQUE RESORT",
     image: "/turnkeyworks/encore-boutique-resort.jpg",
-    // Shortened description to keep the layout clean and prevent button clipping
     description: "Set within the Sahyadri mountains overlooking Mulshi Lake, this contemporary tropical retreat is inspired by Balinese architecture. Built forms sensitively follow the natural contours, integrating streams and existing flora to create an immersive experience that preserves the site's ecological character.",
     specs: "HOSPITALITY - RESORT // MULSHI LAKE, PUNE",
   },
@@ -28,8 +27,8 @@ const turnkeyProjects = [
   }
 ];
 
-// --- PREMIUM ANIMATION VARIANTS ---
-const staggerContainer = {
+// --- PREMIUM ANIMATION VARIANTS (Now with strict Types) ---
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -40,7 +39,7 @@ const staggerContainer = {
   }
 };
 
-const textReveal = {
+const textReveal: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { 
     opacity: 1, 
@@ -102,13 +101,9 @@ export default function TurnkeyWorks() {
           {turnkeyProjects.map((project) => (
             <div key={project.id} className="relative h-full w-screen flex items-center justify-center overflow-hidden flex-shrink-0 px-4 md:px-12 lg:px-24">
               
-              {/* 
-                THE NEW CARD WRAPPER: 
-                Solid white background, perfectly rounded borders, and a deep architectural shadow.
-              */}
               <div className="w-full max-w-[1600px] h-[80vh] max-h-[900px] bg-white rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_100px_-20px_rgba(0,0,0,0.08)] border border-[#1D1D1F]/5 flex flex-col lg:flex-row items-center p-4 md:p-8 lg:p-12 gap-8 lg:gap-16">
                 
-                {/* LEFT: IMAGE FRAME (Inside the card) */}
+                {/* LEFT: IMAGE FRAME */}
                 <motion.div 
                   initial={{ opacity: 0, x: 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -125,7 +120,6 @@ export default function TurnkeyWorks() {
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
-                  {/* Subtle inner shadow overlay for premium depth */}
                   <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-xl md:rounded-[2rem] pointer-events-none" />
                 </motion.div>
 
@@ -135,7 +129,6 @@ export default function TurnkeyWorks() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: false, amount: 0.4 }}
-                  // ADDED: h-[50%] lg:h-auto and overflow-y-auto
                   className="w-full lg:w-[45%] h-[50%] lg:h-auto flex flex-col justify-start lg:justify-center py-2 lg:py-4 pr-0 lg:pr-8 overflow-y-auto"
                 >
                   
@@ -148,8 +141,6 @@ export default function TurnkeyWorks() {
                   <motion.h3 variants={textReveal} className="text-3xl md:text-4xl lg:text-6xl font-medium tracking-tight text-[#1D1D1F] leading-[0.95] uppercase mb-4 lg:mb-8">
                     {project.title}
                   </motion.h3>
-
-                  {/* ... Rest of the text content remains exactly the same ... */}
 
                   <motion.div variants={textReveal} className="w-full h-[1px] bg-[#1D1D1F]/10 mb-8" />
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const steps = [
   {
@@ -25,7 +25,8 @@ const steps = [
   }
 ];
 
-const containerVariants = {
+// Added ': Variants' right here!
+const containerVariants: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -34,7 +35,8 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+// Added ': Variants' right here!
+const itemVariants: Variants = {
   hidden: { y: 30, opacity: 0 },
   show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
 };
