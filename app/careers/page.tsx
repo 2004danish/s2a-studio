@@ -1,7 +1,7 @@
 export default function CareersPage() {
   return (
-    
-      Careers - Coming Soon
-    
+    <div>
+      <h1>Careers - Coming Soon</h1>
+    </div>
   );
 }
