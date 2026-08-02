@@ -1,13 +1,17 @@
-import Hero from "../components/sections/Hero";
-// 1. UPDATED IMPORT: Pointing to your newly renamed file
-import TurnkeyWorks from "../components/sections/TurnkeyWorks"; 
-import ThreeDVizTeaser from "../components/sections/ThreeDVizTeaser";
+"use client";
+
+import dynamic from "next/dynamic";
+import Hero from "@/components/sections/Hero";
+
+// Dynamically load to prevent Framer Motion SSR hydration crashes
+const TurnkeyWorks = dynamic(() => import("@/components/sections/TurnkeyWorks"), { ssr: false });
+const ThreeDVizTeaser = dynamic(() => import("@/components/sections/ThreeDVizTeaser"), { ssr: false });
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full min-h-screen">
+    // FIXED: Removed "overflow-x-hidden". This was killing the sticky scroll effect!
+    <main className="w-full bg-[#F5F5F7]">
       <Hero />
-      {/* 2. UPDATED COMPONENT TAG */}
       <TurnkeyWorks />
       <ThreeDVizTeaser />
     </main>

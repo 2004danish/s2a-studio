@@ -92,3 +92,6 @@ a, button, input, textarea, select {
     linear-gradient(to bottom, rgba(250, 250, 250, 0.02) 1px, transparent 1px);
   background-position: center top;
 }
+body {
+  overflow-x: hidden;
+}

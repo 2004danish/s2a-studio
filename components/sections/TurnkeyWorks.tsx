@@ -27,7 +27,6 @@ const turnkeyProjects = [
   }
 ];
 
-// --- PREMIUM ANIMATION VARIANTS (Now with strict Types) ---
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -61,15 +60,17 @@ export default function TurnkeyWorks() {
   const introParallax = useTransform(scrollYProgress, [0, 0.2], ["0%", "-20%"]);
 
   return (
-    <section ref={sectionRef} style={{ height: `${totalSlides * 100}vh` }} className="relative w-full bg-[#F5F5F7] text-[#1D1D1F] font-sans">
-      
+    <motion.section 
+      id="turnkey" 
+      ref={sectionRef} 
+      style={{ height: `${totalSlides * 100}vh` }} 
+      className="relative w-full bg-[#F5F5F7] text-[#1D1D1F] font-sans"
+    >
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center pt-24 lg:pt-32 pb-12">
-        
         <motion.div 
           style={{ x: xTransform, width: `${totalSlides * 100}vw` }}
           className="flex h-full items-center"
         >
-          
           {/* SLIDE 1: INTRO ROOM */}
           <div className="relative h-full w-screen flex flex-col items-center justify-center overflow-hidden flex-shrink-0 px-6">
             <motion.div 
@@ -100,7 +101,6 @@ export default function TurnkeyWorks() {
           {/* SLIDES 2+: THE ELEVATED GALLERY CARDS */}
           {turnkeyProjects.map((project) => (
             <div key={project.id} className="relative h-full w-screen flex items-center justify-center overflow-hidden flex-shrink-0 px-4 md:px-12 lg:px-24">
-              
               <div className="w-full max-w-[1600px] h-[80vh] max-h-[900px] bg-white rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_100px_-20px_rgba(0,0,0,0.08)] border border-[#1D1D1F]/5 flex flex-col lg:flex-row items-center p-4 md:p-8 lg:p-12 gap-8 lg:gap-16">
                 
                 {/* LEFT: IMAGE FRAME */}
@@ -131,7 +131,6 @@ export default function TurnkeyWorks() {
                   viewport={{ once: false, amount: 0.4 }}
                   className="w-full lg:w-[45%] h-[50%] lg:h-auto flex flex-col justify-start lg:justify-center py-2 lg:py-4 pr-0 lg:pr-8 overflow-y-auto"
                 >
-                  
                   <motion.div variants={textReveal} className="flex items-center gap-4 mb-4 lg:mb-6 mt-4 lg:mt-0">
                     <span className="text-[10px] lg:text-xs font-mono text-[#86868B]">PROJECT</span>
                     <span className="w-8 h-[1px] bg-[#1D1D1F]/20"></span>
@@ -171,13 +170,11 @@ export default function TurnkeyWorks() {
                   </motion.div>
 
                 </motion.div>
-
               </div>
             </div>
           ))}
-
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -42,12 +42,11 @@ export default function ThreeDVizTeaser() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#F5F5F7] text-[#1D1D1F] font-sans">
+    <section ref={sectionRef} id="3d-viz" className="relative w-full bg-[#F5F5F7] text-[#1D1D1F] font-sans">
       <div className="max-w-[1800px] w-full mx-auto px-4 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
         
         {/* LEFT COLUMN: THE STICKY CANVAS */}
         <div className="lg:col-span-7 relative min-w-0">
-          {/* THE MOBILE SPLIT: h-[50vh] on phones, h-screen on desktop */}
           <div className="sticky top-0 h-[50vh] lg:h-screen flex flex-col justify-center pt-24 lg:pt-20 pb-4 lg:pb-10">
             <motion.div 
               initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
@@ -80,7 +79,6 @@ export default function ThreeDVizTeaser() {
         {/* RIGHT COLUMN: SCROLLING TEXT */}
         <div className="lg:col-span-5 flex flex-col relative z-20 min-w-0">
           
-          {/* THE TIMELINE (Hidden on mobile for cleaner UX) */}
           <div className="absolute left-0 md:left-6 top-[22%] bottom-[22%] w-[1px] bg-[#1D1D1F]/10 hidden lg:block">
             <motion.div className="w-full bg-[#1D1D1F] origin-top" style={{ height: timelineHeight }} />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white border-2 border-[#1D1D1F] rounded-full z-10" />
@@ -89,7 +87,6 @@ export default function ThreeDVizTeaser() {
             <motion.div className="absolute left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#1D1D1F] rounded-full shadow-lg z-20 ring-4 ring-[#F5F5F7]" style={{ top: timelineHeight, y: "-50%" }} />
           </div>
 
-          {/* TEXT BLOCK 1 - MATCHES MOBILE SPLIT HEIGHT */}
           <div className="h-[50vh] lg:h-screen flex flex-col justify-center pt-8 lg:pt-20 pb-10 pl-0 lg:pl-16">
             <div className="flex items-center gap-4 mb-4 md:mb-6">
               <span className="w-6 h-[1px] bg-[#1D1D1F]/20"></span>
@@ -102,7 +99,6 @@ export default function ThreeDVizTeaser() {
             </h2>
           </div>
 
-          {/* TEXT BLOCK 2 */}
           <div className="h-[50vh] lg:h-screen flex flex-col justify-center pt-8 lg:pt-20 pb-10 pl-0 lg:pl-16">
             <div className="flex items-center gap-4 mb-4 md:mb-6">
               <div className="w-2 h-2 rounded-full bg-[#1D1D1F] animate-pulse" />

@@ -49,12 +49,17 @@ export default function Hero() {
 
         <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.1)] z-10 border border-[#1D1D1F]/5 bg-[#1D1D1F]">
           
-          {/* 
-            2. THE ZERO-LAG PRELOAD SLIDESHOW
-            Instead of deleting images, we map through all of them. 
-            The browser downloads them instantly on page load in the background.
-            We just toggle the opacity from 0 to 1 to crossfade smoothly.
-          */}
+          {/* THE DRONE VIDEO YOU REQUESTED (Placed on top of the images with z-30) */}
+          <video 
+            src="/hero video/3ddronevideo.mp4"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-30"
+          />
+
+          {/* YOUR EXACT IMAGE SEQUENCE RESTORED - NOTHING DISABLED */}
           {heroImages.map((src, index) => (
             <motion.img 
               key={src}
@@ -71,7 +76,7 @@ export default function Hero() {
             />
           ))}
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 pointer-events-none z-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 pointer-events-none z-40" />
 
           {/* THE FLOATING FAST-TRAVEL CARD */}
           <Link 
@@ -113,7 +118,7 @@ export default function Hero() {
         {/* THE SPECIFICATIONS CARDS */}
         <motion.div 
           style={{ opacity: spec1Opacity, y: spec1Y }}
-          className="absolute right-6 md:right-24 lg:right-32 top-1/2 -translate-y-1/2 z-30 w-[90%] md:w-[420px]"
+          className="absolute right-6 md:right-24 lg:right-32 top-1/2 -translate-y-1/2 z-40 w-[90%] md:w-[420px]"
         >
           <div className="backdrop-blur-2xl backdrop-saturate-150 bg-white/80 p-8 md:p-10 rounded-3xl border border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
             <div className="flex items-center gap-3 mb-5">
@@ -133,7 +138,7 @@ export default function Hero() {
 
         <motion.div 
           style={{ opacity: spec2Opacity, y: spec2Y }}
-          className="absolute left-6 md:left-24 lg:left-32 top-1/2 -translate-y-1/2 z-30 w-[90%] md:w-[420px]"
+          className="absolute left-6 md:left-24 lg:left-32 top-1/2 -translate-y-1/2 z-40 w-[90%] md:w-[420px]"
         >
           <div className="backdrop-blur-2xl backdrop-saturate-150 bg-white/80 p-8 md:p-10 rounded-3xl border border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
             <div className="flex items-center gap-3 mb-5">

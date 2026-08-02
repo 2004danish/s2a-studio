@@ -26,11 +26,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // FIXED: Changed anchor tags (#) to route paths (/)
   const corePillars = [
-    { name: "Architecture", path: "#architecture" },
-    { name: "Interior Design", path: "#interior-design" },
-    { name: "Turnkey Solutions", path: "#turnkey" },
-    { name: "3D Viz", path: "#3d-viz" },
+    { name: "Architecture", path: "/architecture" },
+    { name: "Interior Design", path: "/interior-design" },
+    { name: "Turnkey Solutions", path: "/turnkey" },
+    { name: "3D Viz", path: "/3d-viz" },
   ];
 
   const secondaryLinks = [
@@ -44,13 +45,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 
-        =========================================
-        1. THE TOP NAVBAR (Restored)
-        Stays at the top. Morphs into a pill on scroll. 
-        Logo on the left, Links on the right.
-        =========================================
-      */}
       <header 
         className={`fixed z-[5000] left-0 right-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none flex justify-center ${
           isScrolled && !isMenuOpen
@@ -76,6 +70,7 @@ export default function Navbar() {
           </Link>
 
           <nav className={`hidden lg:flex items-center gap-10 text-[10px] font-mono font-bold tracking-[0.2em] uppercase transition-opacity duration-300 ${isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+            {/* FIXED: Upgraded standard <a> tags to Next.js <Link> components */}
             {corePillars.map((pillar) => (
               <Link key={pillar.name} href={pillar.path} className="text-[#86868B] hover:text-[#1D1D1F] transition-colors duration-300 relative group">
                 {pillar.name}
@@ -86,12 +81,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* 
-        =========================================
-        2. THE BOTTOM "MENU" PILL (The Trigger)
-        A standalone floating button at the bottom center.
-        =========================================
-      */}
       <div className="fixed z-[6000] bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 pointer-events-auto">
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -111,16 +100,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* 
-        =========================================
-        3. THE BOTTOM POP-UP PANEL
-        Glides up from behind the bottom menu pill.
-        =========================================
-      */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* INVISIBLE BACKDROP TO CLOSE WHEN CLICKING OUTSIDE */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -130,7 +112,6 @@ export default function Navbar() {
               className="fixed inset-0 z-[4000] bg-[#1D1D1F]/40 backdrop-blur-sm cursor-pointer"
             />
 
-            {/* THE PANEL */}
             <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.95, filter: "blur(10px)", x: "-50%" }}
               animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)", x: "-50%" }}
@@ -140,10 +121,9 @@ export default function Navbar() {
             >
               <div className="p-8 md:p-10 flex flex-col gap-8">
                 
-                {/* LINKS LIST */}
                 <div className="flex flex-col gap-4">
-                  {/* Mobile Only: Show Core Pillars since the top nav hides on phones */}
                   <div className="flex flex-col gap-4 lg:hidden pb-4 mb-2 border-b border-white/10">
+                    {/* FIXED: Upgraded mobile menu links to Next.js <Link> components */}
                     {corePillars.map((link) => (
                       <Link 
                         key={link.name} 
@@ -156,7 +136,6 @@ export default function Navbar() {
                     ))}
                   </div>
 
-                  {/* Secondary Links */}
                   {secondaryLinks.map((link, i) => (
                     <motion.div
                       key={link.name}
@@ -182,7 +161,6 @@ export default function Navbar() {
 
                 <div className="w-full h-[1px] bg-white/10 my-2" />
 
-                {/* THE MICRO-DATA GRID */}
                 <div className="grid grid-cols-2 gap-6 text-[9px] font-mono tracking-widest text-[#86868B] uppercase">
                   <div className="flex flex-col gap-2">
                     <span className="text-[#555555]">Headquarters</span>
@@ -195,7 +173,6 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* CALL TO ACTION */}
                 <Link 
                   href="/contact"
                   onClick={() => setIsMenuOpen(false)}
