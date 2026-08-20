@@ -3,17 +3,34 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 
-// Dynamically load to prevent Framer Motion SSR hydration crashes
-const TurnkeyWorks = dynamic(() => import("@/components/sections/TurnkeyWorks"), { ssr: false });
-const ThreeDVizTeaser = dynamic(() => import("@/components/sections/ThreeDVizTeaser"), { ssr: false });
+const ClientMarquee = dynamic(() => import("@/components/sections/ClientMarquee"), { ssr: false });
+const Philosophy = dynamic(() => import("@/components/sections/Philosophy"), { ssr: false });
+const SelectedWorks = dynamic(() => import("@/components/sections/SelectedWorks"), { ssr: false });
+const StudioServicesTeaser = dynamic(() => import("@/components/sections/StudioServicesTeaser"), { ssr: false });
+const RecognitionPreview = dynamic(() => import("@/components/sections/Awards"), { ssr: false });
 
 export default function Home() {
   return (
-    // FIXED: Removed "overflow-x-hidden". This was killing the sticky scroll effect!
-    <main className="w-full bg-[#F5F5F7]">
+    <main className="w-full bg-[#F5F5F7] min-h-screen selection:bg-[#1D1D1F] selection:text-[#F5F5F7]">
+      
+      {/* 1. The Hook */}
       <Hero />
-      <TurnkeyWorks />
-      <ThreeDVizTeaser />
+      
+      {/* 2. Immediate Authority Signal */}
+      <ClientMarquee />
+      
+      {/* 3. Studio Mindset (Moved up to complement the marquee) */}
+      <Philosophy />
+      
+      {/* 4. The Portfolio */}
+      <SelectedWorks />
+      
+      {/* 5. The Services Gallery */}
+      <StudioServicesTeaser />
+      
+      {/* 6. Proof of Excellence */}
+      <RecognitionPreview />
+      
     </main>
   );
 }
