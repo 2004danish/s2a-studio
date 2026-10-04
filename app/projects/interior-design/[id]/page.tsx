@@ -1,15 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import { projectsDB } from "../../../data/projectsDB"; 
 
 export default function InteriorProjectDetails() {
   const params = useParams();
-  const projectId = params.id;
+  const projectId = params.id as string;
   
   const project = projectsDB.find(p => p.id === projectId);
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => { 
+      document.body.style.overflow = "auto"; 
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage]);
 
   if (!project) {
     return (
@@ -22,7 +43,7 @@ export default function InteriorProjectDetails() {
   return (
     <main className="min-h-screen w-full bg-[#F5F5F7] text-[#1D1D1F] selection:bg-[#1D1D1F] selection:text-[#F5F5F7]">
       
-      {/* 1. THE PURE HERO (100% Visual Focus, Zero Clutter) */}
+      {/* 1. THE PURE HERO */}
       <div className="pt-24 md:pt-32 px-4 sm:px-6 md:px-12 lg:px-24 max-w-[2000px] mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -41,10 +62,9 @@ export default function InteriorProjectDetails() {
         </motion.div>
       </div>
 
-      {/* 2. THE BLENDED NARRATIVE (Title & Brief have their own dedicated weight) */}
+      {/* 2. THE BLENDED NARRATIVE */}
       <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 lg:py-24 flex flex-col xl:flex-row gap-12 lg:gap-20">
         
-        {/* Left Side: Title & Description */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +88,6 @@ export default function InteriorProjectDetails() {
           </p>
         </motion.div>
 
-        {/* Right Side: Technical Specs */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +114,7 @@ export default function InteriorProjectDetails() {
         </motion.div>
       </div>
 
-      {/* 3. PREMIUM GALLERY GRID (Perfectly rounded, consistent weight) */}
+      {/* 3. PREMIUM UNCROPPED MASONRY GALLERY */}
       {project.gallery && project.gallery.length > 0 && (
         <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 pb-24 md:pb-32">
           <motion.div 
@@ -103,24 +122,35 @@ export default function InteriorProjectDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-8"
           >
-            {project.gallery.map((img, idx) => (
+            {project.gallery
+              .filter(img => img !== project.heroImage)
+              .map((img, idx) => (
               <motion.div 
                 whileHover="hover"
                 initial="initial"
                 key={idx} 
-                className="w-full relative overflow-hidden bg-[#E8E8EA] rounded-[1.5rem] md:rounded-[2rem] aspect-[4/5] cursor-pointer group shadow-sm"
+                className="w-full relative overflow-hidden bg-[#E8E8EA] rounded-[1.5rem] md:rounded-[2rem] cursor-zoom-in group shadow-sm gallery-item break-inside-avoid mb-6 md:mb-8 block"
+                onClick={() => setSelectedImage(img)}
               >
                 <motion.img 
                   variants={{
                     initial: { scale: 1 },
-                    hover: { scale: 1.05, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                    hover: { scale: 1.03, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
                   }}
                   src={img} 
                   alt={`${project.title} Detail ${idx + 1}`} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover block"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    const parent = target.closest('.gallery-item') as HTMLElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                      parent.classList.remove('mb-6', 'md:mb-8'); 
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-[#1D1D1F]/5 pointer-events-none rounded-[1.5rem] md:rounded-[2rem]" />
                 <motion.div variants={{ initial: { opacity: 0 }, hover: { opacity: 1 } }} className="absolute inset-0 bg-black/5 transition-colors duration-500 pointer-events-none" />
@@ -143,6 +173,59 @@ export default function InteriorProjectDetails() {
           </div>
         </Link>
       </div>
+
+      {/* 5. AESTHETIC CINEMATIC LIGHTBOX OVERLAY */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-12 lg:p-20 cursor-zoom-out"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* 🚀 Layer 1: The Glass Blur (Highly transparent but deeply blurred) */}
+            <div className="absolute inset-0 bg-[#1D1D1F]/40 backdrop-blur-3xl" />
+            
+            {/* 🚀 Layer 2: The Cinematic Vignette (Focuses light on the center) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
+
+            {/* 🚀 Layer 3: UX Typography Hint */}
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="absolute top-8 left-1/2 -translate-x-1/2 text-white/50 text-[10px] font-mono tracking-[0.3em] uppercase hidden md:block pointer-events-none z-10"
+            >
+              Click anywhere to close
+            </motion.div>
+
+            {/* 🚀 Layer 4: Elegant Frosted Close Button */}
+            <button 
+              className="absolute top-6 right-6 md:top-10 md:right-12 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/15 text-white/80 hover:text-white transition-all duration-300 z-50 outline-none hover:scale-105 active:scale-95 shadow-xl"
+              onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+              aria-label="Close Lightbox (Press Escape)"
+            >
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* 🚀 Layer 5: The Floating Image (With cinematic shadow and glass ring) */}
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              src={selectedImage}
+              alt="Expanded architectural view"
+              className="relative z-10 max-w-full max-h-full object-contain rounded-[1rem] shadow-[0_20px_80px_rgba(0,0,0,0.6)] ring-1 ring-white/10 cursor-default"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );

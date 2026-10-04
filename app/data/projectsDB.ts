@@ -18,7 +18,7 @@ const generateGallery = (folderName: string, imageCount: number) => {
   return Array.from({ length: imageCount }, (_, i) => `/interior-projects/${folderName}/${i + 1}.jpg`);
 };
 
-// 📂 YOUR MASTER PROJECT LIST (Ordered exactly as requested)
+// 📂 YOUR MASTER PROJECT LIST (All galleries now set to attempt loading 50 images)
 export const projectsDB: Project[] = [
   
   // 1
@@ -29,11 +29,11 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/4bhk-residential-interior-khardi-pune/1.jpg", 
     heroImage: "/interior-projects/4bhk-residential-interior-khardi-pune/1.jpg", 
-    gallery: generateGallery("4bhk-residential-interior-khardi-pune", 5), // <-- CHANGE '5' TO YOUR ACTUAL IMAGE COUNT
+    gallery: generateGallery("4bhk-residential-interior-khardi-pune", 50),
     description: "A comprehensive interior overhaul focusing on spatial fluidity and modern materiality.",
     specs: "RESIDENTIAL // 4BHK",
     location: "Khardi, Pune",
-    isFeatured: true // Large grid item
+    isFeatured: true 
   },
 
   // 2
@@ -44,7 +44,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-mundawa/1.jpg", 
     heroImage: "/interior-projects/interiors-at-mundawa/1.jpg", 
-    gallery: generateGallery("interiors-at-mundawa", 5), 
+    gallery: generateGallery("interiors-at-mundawa", 50), 
     description: "Modern residential interior focusing on natural light and raw textures.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Mundawa, Pune",
@@ -59,7 +59,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/4bhk-residential-interior-baner-pune/1.jpg", 
     heroImage: "/interior-projects/4bhk-residential-interior-baner-pune/1.jpg", 
-    gallery: generateGallery("4bhk-residential-interior-baner-pune", 5), 
+    gallery: generateGallery("4bhk-residential-interior-baner-pune", 50), 
     description: "Premium residential design blending warm timber with minimal finishes.",
     specs: "RESIDENTIAL // 4BHK",
     location: "Baner, Pune",
@@ -74,7 +74,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-lodha-belmond/1.jpg", 
     heroImage: "/interior-projects/interiors-at-lodha-belmond/1.jpg", 
-    gallery: generateGallery("interiors-at-lodha-belmond", 5), 
+    gallery: generateGallery("interiors-at-lodha-belmond", 50), 
     description: "High-end apartment interior focusing on bespoke joinery and lighting.",
     specs: "RESIDENTIAL // APARTMENT",
     location: "Pune",
@@ -89,7 +89,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-at-sangli/1.jpg", 
     heroImage: "/interior-projects/bungalow-at-sangli/1.jpg", 
-    gallery: generateGallery("bungalow-at-sangli", 5), 
+    gallery: generateGallery("bungalow-at-sangli", 50), 
     description: "Spacious bungalow interior harmonizing with its architectural envelope.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Sangli, MH",
@@ -98,17 +98,17 @@ export const projectsDB: Project[] = [
 
   // 6
   { 
-    id: "bungalow-interiors-at-mumbai", // Matches your folder spelling exactly
+    id: "bungalow-interiors-at-mumbai", 
     title: "Mumbai Bungalow", 
     typology: "Interior Design", 
     year: "2024",
     image: "/interior-projects/bungalow-interiors-at-mumbai/1.jpg", 
-    heroImage: "/interior-projects/bunglow-interiors-at-mumbai/1.jpg", 
-    gallery: generateGallery("bunglow-interiors-at-mumbai", 5), 
+    heroImage: "/interior-projects/bungalow-interiors-at-mumbai/1.jpg", 
+    gallery: generateGallery("bungalow-interiors-at-mumbai", 50), 
     description: "Urban luxury living with custom monolithic stone installations.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Mumbai, MH",
-    isFeatured: true // Large grid item
+    isFeatured: true 
   },
 
   // 7
@@ -119,7 +119,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/salon-at-ahmedabad/1.jpg", 
     heroImage: "/interior-projects/salon-at-ahmedabad/1.jpg", 
-    gallery: generateGallery("salon-at-ahmedabad", 5), 
+    gallery: generateGallery("salon-at-ahmedabad", 50), 
     description: "Commercial salon interior blending luxury lighting with ergonomic spatial flow.",
     specs: "COMMERCIAL // SALON",
     location: "Ahmedabad, GJ",
@@ -134,7 +134,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-amanora/1.jpg", 
     heroImage: "/interior-projects/interiors-at-amanora/1.jpg", 
-    gallery: generateGallery("interiors-at-amanora", 5), 
+    gallery: generateGallery("interiors-at-amanora", 50), 
     description: "Contemporary apartment styling emphasizing open floor plans.",
     specs: "RESIDENTIAL // APARTMENT",
     location: "Amanora, Pune",
@@ -149,7 +149,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-residence-interiors/1.jpg", 
     heroImage: "/interior-projects/bungalow-residence-interiors/1.jpg", 
-    gallery: generateGallery("bungalow-residence-interiors", 5), 
+    gallery: generateGallery("bungalow-residence-interiors", 50), 
     description: "Curated furniture and warm palettes tailored for family living.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Maharashtra",
@@ -164,7 +164,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/bungalow-residence-interiors-kothrud-pune/1.jpg", 
     heroImage: "/interior-projects/bungalow-residence-interiors-kothrud-pune/1.jpg", 
-    gallery: generateGallery("bungalow-residence-interiors-kothrud-pune", 5), 
+    gallery: generateGallery("bungalow-residence-interiors-kothrud-pune", 50), 
     description: "Bespoke residential design maximizing spatial efficiency and elegance.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Kothrud, Pune",
@@ -179,11 +179,11 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/office-interiors-talegaon-pune/1.jpg", 
     heroImage: "/interior-projects/office-interiors-talegaon-pune/1.jpg", 
-    gallery: generateGallery("office-interiors-talegaon-pune", 5), 
+    gallery: generateGallery("office-interiors-talegaon-pune", 50), 
     description: "Corporate workspace engineered for collaboration and focused productivity.",
     specs: "COMMERCIAL // OFFICE",
     location: "Talegaon, Pune",
-    isFeatured: true // Large grid item
+    isFeatured: true 
   },
 
   // 12
@@ -194,7 +194,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/residential-interiors-at-deolali-pune/1.jpg", 
     heroImage: "/interior-projects/residential-interiors-at-deolali-pune/1.jpg", 
-    gallery: generateGallery("residential-interiors-at-deolali-pune", 5), 
+    gallery: generateGallery("residential-interiors-at-deolali-pune", 50), 
     description: "Seamless integration of traditional elements within a modern framework.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Deolali, Pune",
@@ -209,7 +209,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-residential-interior-pune/1.jpg", 
     heroImage: "/interior-projects/bungalow-residential-interior-pune/1.jpg", 
-    gallery: generateGallery("bungalow-residential-interior-pune", 5), 
+    gallery: generateGallery("bungalow-residential-interior-pune", 50), 
     description: "Expansive luxury interiors with a focus on tactile materiality.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Pune, MH",
@@ -224,7 +224,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/golds-gym-at-satara-road/1.jpg", 
     heroImage: "/interior-projects/golds-gym-at-satara-road/1.jpg", 
-    gallery: generateGallery("golds-gym-at-satara-road", 5), 
+    gallery: generateGallery("golds-gym-at-satara-road", 50), 
     description: "High-energy fitness environment utilizing industrial aesthetics and durable materiality.",
     specs: "COMMERCIAL // FITNESS",
     location: "Satara Road, Pune",
@@ -239,7 +239,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bagul-resort-mulshi/1.jpg", 
     heroImage: "/interior-projects/bagul-resort-mulshi/1.jpg", 
-    gallery: generateGallery("bagul-resort-mulshi", 5), 
+    gallery: generateGallery("bagul-resort-mulshi", 50), 
     description: "Hospitality interiors designed to merge luxury with natural textures.",
     specs: "HOSPITALITY // RESORT",
     location: "Mulshi, Pune",
@@ -254,11 +254,11 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/mr-rajesh-mehta-residence-interior-nibm/1.jpg", 
     heroImage: "/interior-projects/mr-rajesh-mehta-residence-interior-nibm/1.jpg", 
-    gallery: generateGallery("mr-rajesh-mehta-residence-interior-nibm", 5), 
+    gallery: generateGallery("mr-rajesh-mehta-residence-interior-nibm", 50), 
     description: "Refined aesthetic approach emphasizing neutral tones and custom art pieces.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "NIBM, Pune",
-    isFeatured: true // Large grid item
+    isFeatured: true 
   },
 
   // 17
@@ -269,7 +269,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/katraj-cafe/1.jpg", 
     heroImage: "/interior-projects/katraj-cafe/1.jpg", 
-    gallery: generateGallery("katraj-cafe", 5), 
+    gallery: generateGallery("katraj-cafe", 50), 
     description: "Intimate hospitality setting utilizing ambient lighting and raw finishes.",
     specs: "HOSPITALITY // CAFE",
     location: "Katraj, Pune",
@@ -278,13 +278,13 @@ export const projectsDB: Project[] = [
 
   // 18
   { 
-    id: "tru-reality-experience-centre", // Matches folder spelling
+    id: "tru-reality-experience-centre", 
     title: "Tru Realty Experience Centre", 
     typology: "Interior Design", 
     year: "2024",
     image: "/interior-projects/tru-reality-experience-centre/1.jpg", 
     heroImage: "/interior-projects/tru-reality-experience-centre/1.jpg", 
-    gallery: generateGallery("tru-reality-experience-centre", 5), 
+    gallery: generateGallery("tru-reality-experience-centre", 50), 
     description: "Immersive sales environment designed to showcase premium real estate.",
     specs: "COMMERCIAL // EXPERIENCE CENTRE",
     location: "Pune, MH",
@@ -299,7 +299,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/pub-at-khed-shivapur/1.jpg", 
     heroImage: "/interior-projects/pub-at-khed-shivapur/1.jpg", 
-    gallery: generateGallery("pub-at-khed-shivapur", 5), 
+    gallery: generateGallery("pub-at-khed-shivapur", 50), 
     description: "Dynamic nightlife venue combining acoustic engineering with moody aesthetics.",
     specs: "HOSPITALITY // PUB",
     location: "Khed Shivapur, Pune",
@@ -314,7 +314,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/commercial-office-at-pune/1.jpg", 
     heroImage: "/interior-projects/commercial-office-at-pune/1.jpg", 
-    gallery: generateGallery("commercial-office-at-pune", 5), 
+    gallery: generateGallery("commercial-office-at-pune", 50), 
     description: "Sleek, professional workspace designed for high-performance teams.",
     specs: "COMMERCIAL // OFFICE",
     location: "Pune, MH",
@@ -329,11 +329,11 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/green-villa-housing-at-sangwade/1.jpg", 
     heroImage: "/interior-projects/green-villa-housing-at-sangwade/1.jpg", 
-    gallery: generateGallery("green-villa-housing-at-sangwade", 5), 
+    gallery: generateGallery("green-villa-housing-at-sangwade", 50), 
     description: "Sustainable interior strategies paired with biophilic design elements.",
     specs: "RESIDENTIAL // VILLA",
     location: "Sangwade, MH",
-    isFeatured: true // Large grid item
+    isFeatured: true 
   },
 
   // 22
@@ -344,7 +344,7 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/lobby-at-westend/1.jpg", 
     heroImage: "/interior-projects/lobby-at-westend/1.jpg", 
-    gallery: generateGallery("lobby-at-westend", 5), 
+    gallery: generateGallery("lobby-at-westend", 50), 
     description: "A high-traffic commercial lobby combining striking geometry with elegant materials.",
     specs: "COMMERCIAL // LOBBY",
     location: "Pune, MH",
@@ -359,7 +359,7 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/mrs-mote-residence-interiors/1.jpg", 
     heroImage: "/interior-projects/mrs-mote-residence-interiors/1.jpg", 
-    gallery: generateGallery("mrs-mote-residence-interiors", 5), 
+    gallery: generateGallery("mrs-mote-residence-interiors", 50), 
     description: "Refined family living space emphasizing comfort and timeless aesthetics.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Pune, MH",
