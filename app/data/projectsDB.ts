@@ -13,15 +13,21 @@ export interface Project {
   isFeatured?: boolean;
 }
 
-// 🚀 THE HELPER FUNCTION
-const generateGallery = (folderName: string, imageCount: number) => {
+// 🚀 HELPER FUNCTIONS
+const generateInteriorGallery = (folderName: string, imageCount: number) => {
   return Array.from({ length: imageCount }, (_, i) => `/interior-projects/${folderName}/${i + 1}.jpg`);
 };
 
-// 📂 YOUR MASTER PROJECT LIST (All galleries now set to attempt loading 50 images)
+const generateArchGallery = (folderName: string, imageCount: number) => {
+  return Array.from({ length: imageCount }, (_, i) => `/architecture/${folderName}/${i + 1}.jpg`);
+};
+
+// 📂 MASTER PROJECT LIST (Interior & Architecture Combined)
 export const projectsDB: Project[] = [
   
-  // 1
+  // ==========================================
+  // INTERIOR DESIGN PROJECTS (1 - 23)
+  // ==========================================
   { 
     id: "4bhk-residential-interior-khardi-pune", 
     title: "4BHK Interior Khardi", 
@@ -29,14 +35,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/4bhk-residential-interior-khardi-pune/1.jpg", 
     heroImage: "/interior-projects/4bhk-residential-interior-khardi-pune/1.jpg", 
-    gallery: generateGallery("4bhk-residential-interior-khardi-pune", 50),
+    gallery: generateInteriorGallery("4bhk-residential-interior-khardi-pune", 50),
     description: "A comprehensive interior overhaul focusing on spatial fluidity and modern materiality.",
     specs: "RESIDENTIAL // 4BHK",
     location: "Khardi, Pune",
     isFeatured: true 
   },
-
-  // 2
   { 
     id: "interiors-at-mundawa", 
     title: "Mundawa Interiors", 
@@ -44,14 +48,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-mundawa/1.jpg", 
     heroImage: "/interior-projects/interiors-at-mundawa/1.jpg", 
-    gallery: generateGallery("interiors-at-mundawa", 50), 
+    gallery: generateInteriorGallery("interiors-at-mundawa", 50), 
     description: "Modern residential interior focusing on natural light and raw textures.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Mundawa, Pune",
     isFeatured: false 
   },
-
-  // 3
   { 
     id: "4bhk-residential-interior-baner-pune", 
     title: "4BHK Interior Baner", 
@@ -59,14 +61,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/4bhk-residential-interior-baner-pune/1.jpg", 
     heroImage: "/interior-projects/4bhk-residential-interior-baner-pune/1.jpg", 
-    gallery: generateGallery("4bhk-residential-interior-baner-pune", 50), 
+    gallery: generateInteriorGallery("4bhk-residential-interior-baner-pune", 50), 
     description: "Premium residential design blending warm timber with minimal finishes.",
     specs: "RESIDENTIAL // 4BHK",
     location: "Baner, Pune",
     isFeatured: false 
   },
-
-  // 4
   { 
     id: "interiors-at-lodha-belmond", 
     title: "Lodha Belmond Residence", 
@@ -74,14 +74,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-lodha-belmond/1.jpg", 
     heroImage: "/interior-projects/interiors-at-lodha-belmond/1.jpg", 
-    gallery: generateGallery("interiors-at-lodha-belmond", 50), 
+    gallery: generateInteriorGallery("interiors-at-lodha-belmond", 50), 
     description: "High-end apartment interior focusing on bespoke joinery and lighting.",
     specs: "RESIDENTIAL // APARTMENT",
     location: "Pune",
     isFeatured: false 
   },
-
-  // 5
   { 
     id: "bungalow-at-sangli", 
     title: "Sangli Bungalow", 
@@ -89,14 +87,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-at-sangli/1.jpg", 
     heroImage: "/interior-projects/bungalow-at-sangli/1.jpg", 
-    gallery: generateGallery("bungalow-at-sangli", 50), 
+    gallery: generateInteriorGallery("bungalow-at-sangli", 50), 
     description: "Spacious bungalow interior harmonizing with its architectural envelope.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Sangli, MH",
     isFeatured: false 
   },
-
-  // 6
   { 
     id: "bungalow-interiors-at-mumbai", 
     title: "Mumbai Bungalow", 
@@ -104,14 +100,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/bungalow-interiors-at-mumbai/1.jpg", 
     heroImage: "/interior-projects/bungalow-interiors-at-mumbai/1.jpg", 
-    gallery: generateGallery("bungalow-interiors-at-mumbai", 50), 
+    gallery: generateInteriorGallery("bungalow-interiors-at-mumbai", 50), 
     description: "Urban luxury living with custom monolithic stone installations.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Mumbai, MH",
     isFeatured: true 
   },
-
-  // 7
   { 
     id: "salon-at-ahmedabad", 
     title: "La Nova Salon", 
@@ -119,14 +113,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/salon-at-ahmedabad/1.jpg", 
     heroImage: "/interior-projects/salon-at-ahmedabad/1.jpg", 
-    gallery: generateGallery("salon-at-ahmedabad", 50), 
+    gallery: generateInteriorGallery("salon-at-ahmedabad", 50), 
     description: "Commercial salon interior blending luxury lighting with ergonomic spatial flow.",
     specs: "COMMERCIAL // SALON",
     location: "Ahmedabad, GJ",
     isFeatured: false 
   },
-
-  // 8
   { 
     id: "interiors-at-amanora", 
     title: "Amanora Interiors", 
@@ -134,14 +126,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/interiors-at-amanora/1.jpg", 
     heroImage: "/interior-projects/interiors-at-amanora/1.jpg", 
-    gallery: generateGallery("interiors-at-amanora", 50), 
+    gallery: generateInteriorGallery("interiors-at-amanora", 50), 
     description: "Contemporary apartment styling emphasizing open floor plans.",
     specs: "RESIDENTIAL // APARTMENT",
     location: "Amanora, Pune",
     isFeatured: false 
   },
-
-  // 9
   { 
     id: "bungalow-residence-interiors", 
     title: "Bungalow Residence", 
@@ -149,14 +139,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-residence-interiors/1.jpg", 
     heroImage: "/interior-projects/bungalow-residence-interiors/1.jpg", 
-    gallery: generateGallery("bungalow-residence-interiors", 50), 
+    gallery: generateInteriorGallery("bungalow-residence-interiors", 50), 
     description: "Curated furniture and warm palettes tailored for family living.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Maharashtra",
     isFeatured: false 
   },
-
-  // 10
   { 
     id: "bungalow-residence-interiors-kothrud-pune", 
     title: "Kothrud Bungalow", 
@@ -164,14 +152,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/bungalow-residence-interiors-kothrud-pune/1.jpg", 
     heroImage: "/interior-projects/bungalow-residence-interiors-kothrud-pune/1.jpg", 
-    gallery: generateGallery("bungalow-residence-interiors-kothrud-pune", 50), 
+    gallery: generateInteriorGallery("bungalow-residence-interiors-kothrud-pune", 50), 
     description: "Bespoke residential design maximizing spatial efficiency and elegance.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Kothrud, Pune",
     isFeatured: false 
   },
-
-  // 11
   { 
     id: "office-interiors-talegaon-pune", 
     title: "Talegaon Office", 
@@ -179,14 +165,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/office-interiors-talegaon-pune/1.jpg", 
     heroImage: "/interior-projects/office-interiors-talegaon-pune/1.jpg", 
-    gallery: generateGallery("office-interiors-talegaon-pune", 50), 
+    gallery: generateInteriorGallery("office-interiors-talegaon-pune", 50), 
     description: "Corporate workspace engineered for collaboration and focused productivity.",
     specs: "COMMERCIAL // OFFICE",
     location: "Talegaon, Pune",
     isFeatured: true 
   },
-
-  // 12
   { 
     id: "residential-interiors-at-deolali-pune", 
     title: "Deolali Residence", 
@@ -194,14 +178,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/residential-interiors-at-deolali-pune/1.jpg", 
     heroImage: "/interior-projects/residential-interiors-at-deolali-pune/1.jpg", 
-    gallery: generateGallery("residential-interiors-at-deolali-pune", 50), 
+    gallery: generateInteriorGallery("residential-interiors-at-deolali-pune", 50), 
     description: "Seamless integration of traditional elements within a modern framework.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Deolali, Pune",
     isFeatured: false 
   },
-
-  // 13
   { 
     id: "bungalow-residential-interior-pune", 
     title: "Pune Bungalow", 
@@ -209,14 +191,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bungalow-residential-interior-pune/1.jpg", 
     heroImage: "/interior-projects/bungalow-residential-interior-pune/1.jpg", 
-    gallery: generateGallery("bungalow-residential-interior-pune", 50), 
+    gallery: generateInteriorGallery("bungalow-residential-interior-pune", 50), 
     description: "Expansive luxury interiors with a focus on tactile materiality.",
     specs: "RESIDENTIAL // BUNGALOW",
     location: "Pune, MH",
     isFeatured: false 
   },
-
-  // 14
   { 
     id: "golds-gym-at-satara-road", 
     title: "Gold Gym Satara Road", 
@@ -224,14 +204,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/golds-gym-at-satara-road/1.jpg", 
     heroImage: "/interior-projects/golds-gym-at-satara-road/1.jpg", 
-    gallery: generateGallery("golds-gym-at-satara-road", 50), 
+    gallery: generateInteriorGallery("golds-gym-at-satara-road", 50), 
     description: "High-energy fitness environment utilizing industrial aesthetics and durable materiality.",
     specs: "COMMERCIAL // FITNESS",
     location: "Satara Road, Pune",
     isFeatured: false 
   },
-
-  // 15
   { 
     id: "bagul-resort-mulshi", 
     title: "Bagul Resort", 
@@ -239,14 +217,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/bagul-resort-mulshi/1.jpg", 
     heroImage: "/interior-projects/bagul-resort-mulshi/1.jpg", 
-    gallery: generateGallery("bagul-resort-mulshi", 50), 
+    gallery: generateInteriorGallery("bagul-resort-mulshi", 50), 
     description: "Hospitality interiors designed to merge luxury with natural textures.",
     specs: "HOSPITALITY // RESORT",
     location: "Mulshi, Pune",
     isFeatured: false 
   },
-
-  // 16
   { 
     id: "mr-rajesh-mehta-residence-interior-nibm", 
     title: "Mehta Residence", 
@@ -254,14 +230,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/mr-rajesh-mehta-residence-interior-nibm/1.jpg", 
     heroImage: "/interior-projects/mr-rajesh-mehta-residence-interior-nibm/1.jpg", 
-    gallery: generateGallery("mr-rajesh-mehta-residence-interior-nibm", 50), 
+    gallery: generateInteriorGallery("mr-rajesh-mehta-residence-interior-nibm", 50), 
     description: "Refined aesthetic approach emphasizing neutral tones and custom art pieces.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "NIBM, Pune",
     isFeatured: true 
   },
-
-  // 17
   { 
     id: "katraj-cafe", 
     title: "Katraj Cafe", 
@@ -269,14 +243,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/katraj-cafe/1.jpg", 
     heroImage: "/interior-projects/katraj-cafe/1.jpg", 
-    gallery: generateGallery("katraj-cafe", 50), 
+    gallery: generateInteriorGallery("katraj-cafe", 50), 
     description: "Intimate hospitality setting utilizing ambient lighting and raw finishes.",
     specs: "HOSPITALITY // CAFE",
     location: "Katraj, Pune",
     isFeatured: false 
   },
-
-  // 18
   { 
     id: "tru-reality-experience-centre", 
     title: "Tru Realty Experience Centre", 
@@ -284,14 +256,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/tru-reality-experience-centre/1.jpg", 
     heroImage: "/interior-projects/tru-reality-experience-centre/1.jpg", 
-    gallery: generateGallery("tru-reality-experience-centre", 50), 
+    gallery: generateInteriorGallery("tru-reality-experience-centre", 50), 
     description: "Immersive sales environment designed to showcase premium real estate.",
     specs: "COMMERCIAL // EXPERIENCE CENTRE",
     location: "Pune, MH",
     isFeatured: false 
   },
-
-  // 19
   { 
     id: "pub-at-khed-shivapur", 
     title: "Khed Shivapur Pub", 
@@ -299,14 +269,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/pub-at-khed-shivapur/1.jpg", 
     heroImage: "/interior-projects/pub-at-khed-shivapur/1.jpg", 
-    gallery: generateGallery("pub-at-khed-shivapur", 50), 
+    gallery: generateInteriorGallery("pub-at-khed-shivapur", 50), 
     description: "Dynamic nightlife venue combining acoustic engineering with moody aesthetics.",
     specs: "HOSPITALITY // PUB",
     location: "Khed Shivapur, Pune",
     isFeatured: false 
   },
-
-  // 20
   { 
     id: "commercial-office-at-pune", 
     title: "Pune Commercial Office", 
@@ -314,14 +282,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/commercial-office-at-pune/1.jpg", 
     heroImage: "/interior-projects/commercial-office-at-pune/1.jpg", 
-    gallery: generateGallery("commercial-office-at-pune", 50), 
+    gallery: generateInteriorGallery("commercial-office-at-pune", 50), 
     description: "Sleek, professional workspace designed for high-performance teams.",
     specs: "COMMERCIAL // OFFICE",
     location: "Pune, MH",
     isFeatured: false 
   },
-
-  // 21
   { 
     id: "green-villa-housing-at-sangwade", 
     title: "Green Villa Sangwade", 
@@ -329,14 +295,12 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/green-villa-housing-at-sangwade/1.jpg", 
     heroImage: "/interior-projects/green-villa-housing-at-sangwade/1.jpg", 
-    gallery: generateGallery("green-villa-housing-at-sangwade", 50), 
+    gallery: generateInteriorGallery("green-villa-housing-at-sangwade", 50), 
     description: "Sustainable interior strategies paired with biophilic design elements.",
     specs: "RESIDENTIAL // VILLA",
     location: "Sangwade, MH",
     isFeatured: true 
   },
-
-  // 22
   { 
     id: "lobby-at-westend", 
     title: "Westend Lobby", 
@@ -344,14 +308,12 @@ export const projectsDB: Project[] = [
     year: "2024",
     image: "/interior-projects/lobby-at-westend/1.jpg", 
     heroImage: "/interior-projects/lobby-at-westend/1.jpg", 
-    gallery: generateGallery("lobby-at-westend", 50), 
+    gallery: generateInteriorGallery("lobby-at-westend", 50), 
     description: "A high-traffic commercial lobby combining striking geometry with elegant materials.",
     specs: "COMMERCIAL // LOBBY",
     location: "Pune, MH",
     isFeatured: false 
   },
-
-  // 23
   { 
     id: "mrs-mote-residence-interiors", 
     title: "Mote Residence", 
@@ -359,10 +321,848 @@ export const projectsDB: Project[] = [
     year: "2025",
     image: "/interior-projects/mrs-mote-residence-interiors/1.jpg", 
     heroImage: "/interior-projects/mrs-mote-residence-interiors/1.jpg", 
-    gallery: generateGallery("mrs-mote-residence-interiors", 50), 
+    gallery: generateInteriorGallery("mrs-mote-residence-interiors", 50), 
     description: "Refined family living space emphasizing comfort and timeless aesthetics.",
     specs: "RESIDENTIAL // INTERIOR",
     location: "Pune, MH",
     isFeatured: false 
+  },
+
+  // ==========================================
+  // ARCHITECTURE PROJECTS (2 - 64)
+  // ==========================================
+  {
+    id: "2-blue-horizon-resort-khed-shivapur",
+    title: "Blue Horizon Resort",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/2-blue-horizon-resort-khed-shivapur/1.jpg",
+    heroImage: "/architecture/2-blue-horizon-resort-khed-shivapur/1.jpg",
+    gallery: generateArchGallery("2-blue-horizon-resort-khed-shivapur", 50),
+    description: "Eco-resort utilizing sweeping tensile structures over natural terrain.",
+    specs: "HOSPITALITY // RESORT",
+    location: "Khed Shivapur",
+    isFeatured: true
+  },
+  {
+    id: "3-resort-at-varve",
+    title: "Resort at Varve",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/3-resort-at-varve/1.jpg",
+    heroImage: "/architecture/3-resort-at-varve/1.jpg",
+    gallery: generateArchGallery("3-resort-at-varve", 50),
+    description: "Boutique hospitality pods scattered naturally across a densely forested hillside.",
+    specs: "HOSPITALITY // RESORT",
+    location: "Varve",
+    isFeatured: false
+  },
+  {
+    id: "4-5star-hotel-jabalpur-mp",
+    title: "5 Star Hotel, Jabalpur",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/4-5star-hotel-jabalpur-mp/1.jpg",
+    heroImage: "/architecture/4-5star-hotel-jabalpur-mp/1.jpg",
+    gallery: generateArchGallery("4-5star-hotel-jabalpur-mp", 50),
+    description: "Monumental luxury hospitality architecture designed as a civic landmark.",
+    specs: "COMMERCIAL // HOTEL",
+    location: "Jabalpur, MP",
+    isFeatured: false
+  },
+  {
+    id: "5-encore-boutique-resort-phase-II",
+    title: "Encore Boutique Resort - Phase II",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/5-encore-boutique-resort-phase-II/1.jpg",
+    heroImage: "/architecture/5-encore-boutique-resort-phase-II/1.jpg",
+    gallery: generateArchGallery("5-encore-boutique-resort-phase-II", 50),
+    description: "Phase II expansion of a luxury hospitality venue focusing on intimate pool villas.",
+    specs: "HOSPITALITY // RESORT",
+    location: "Maharashtra",
+    isFeatured: false
+  },
+  {
+    id: "6-pmc-canal-development",
+    title: "PMC Canal Development",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/6-pmc-canal-development/1.jpg",
+    heroImage: "/architecture/6-pmc-canal-development/1.jpg",
+    gallery: generateArchGallery("6-pmc-canal-development", 50),
+    description: "Urban planning and landscape masterplan for reviving civic waterways.",
+    specs: "CIVIC // URBAN PLANNING",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "7-greenvilla-housing-at-sangwade-pune",
+    title: "Green Villa Housing",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/7-greenvilla-housing-at-sangwade-pune/1.jpg",
+    heroImage: "/architecture/7-greenvilla-housing-at-sangwade-pune/1.jpg",
+    gallery: generateArchGallery("7-greenvilla-housing-at-sangwade-pune", 50),
+    description: "Sustainable multi-unit housing complex emphasizing biophilic design.",
+    specs: "RESIDENTIAL // HOUSING",
+    location: "Sangwade, Pune",
+    isFeatured: true
+  },
+  {
+    id: "8-farmhouse-at-sangwade-pune",
+    title: "Farmhouse at Sangwade",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/8-farmhouse-at-sangwade-pune/1.jpg",
+    heroImage: "/architecture/8-farmhouse-at-sangwade-pune/1.jpg",
+    gallery: generateArchGallery("8-farmhouse-at-sangwade-pune", 50),
+    description: "Rural retreat designed to harmonize with its agricultural surroundings.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Sangwade, Pune",
+    isFeatured: false
+  },
+  {
+    id: "9-calyx-house-pune",
+    title: "Calyx House",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/9-calyx-house-pune/1.jpg",
+    heroImage: "/architecture/9-calyx-house-pune/1.jpg",
+    gallery: generateArchGallery("9-calyx-house-pune", 50),
+    description: "Classic residential architecture featuring symmetrical columned porticos.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "10-bungalow-at-kekarav-bavdhan",
+    title: "Bungalow at Kekarav",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/10-bungalow-at-kekarav-bavdhan/1.jpg",
+    heroImage: "/architecture/10-bungalow-at-kekarav-bavdhan/1.jpg",
+    gallery: generateArchGallery("10-bungalow-at-kekarav-bavdhan", 50),
+    description: "Sharp, angular contemporary design tailored to a sloped topography.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Bavdhan",
+    isFeatured: false
+  },
+  {
+    id: "11-nayan-shanti-playgroup-lohegaon",
+    title: "Nayan Shanti Playgroup",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/11-nayan-shanti-playgroup-lohegaon/1.jpg",
+    heroImage: "/architecture/11-nayan-shanti-playgroup-lohegaon/1.jpg",
+    gallery: generateArchGallery("11-nayan-shanti-playgroup-lohegaon", 50),
+    description: "Playful, organic architectural forms designed specifically for early childhood education.",
+    specs: "INSTITUTIONAL // EDUCATION",
+    location: "Lohegaon",
+    isFeatured: false
+  },
+  {
+    id: "12-villa-at-amanora",
+    title: "Villa at Amanora",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/12-villa-at-amanora/1.jpg",
+    heroImage: "/architecture/12-villa-at-amanora/1.jpg",
+    gallery: generateArchGallery("12-villa-at-amanora", 50),
+    description: "Sleek, ultra-modern villa featuring expansive glass and cantilevered roofs.",
+    specs: "RESIDENTIAL // VILLA",
+    location: "Pune",
+    isFeatured: true
+  },
+  {
+    id: "13-bungalow-at-sangali",
+    title: "Bungalow at Sangli",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/13-bungalow-at-sangali/1.jpg",
+    heroImage: "/architecture/13-bungalow-at-sangali/1.jpg",
+    gallery: generateArchGallery("13-bungalow-at-sangali", 50),
+    description: "Elegant cubic massing creating a pristine modern aesthetic.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Sangli",
+    isFeatured: false
+  },
+  {
+    id: "14-bungalow-at-baramati",
+    title: "Bungalow at Baramati",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/14-bungalow-at-baramati/1.jpg",
+    heroImage: "/architecture/14-bungalow-at-baramati/1.jpg",
+    gallery: generateArchGallery("14-bungalow-at-baramati", 50),
+    description: "Contemporary residence integrating floating volumes and extensive greenery.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Baramati",
+    isFeatured: false
+  },
+  {
+    id: "15-bungalow-at-deolali",
+    title: "Bungalow at Deolali, Ahilya Nagar",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/15-bungalow-at-deolali/1.jpg",
+    heroImage: "/architecture/15-bungalow-at-deolali/1.jpg",
+    gallery: generateArchGallery("15-bungalow-at-deolali", 50),
+    description: "Fluid architectural forms breaking away from traditional box geometries.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Ahilya Nagar",
+    isFeatured: false
+  },
+  {
+    id: "16-bahai-educational-centre-at-sangali",
+    title: "Bahai Educational Centre",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/16-bahai-educational-centre-at-sangali/1.jpg",
+    heroImage: "/architecture/16-bahai-educational-centre-at-sangali/1.jpg",
+    gallery: generateArchGallery("16-bahai-educational-centre-at-sangali", 50),
+    description: "Institutional design harmonizing spiritual geometries with landscape architecture.",
+    specs: "INSTITUTIONAL // EDUCATION",
+    location: "Sangli",
+    isFeatured: false
+  },
+  {
+    id: "17-bungalow-at-ahmedabad",
+    title: "Bungalow at Ahmedabad",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/17-bungalow-at-ahmedabad/1.jpg",
+    heroImage: "/architecture/17-bungalow-at-ahmedabad/1.jpg",
+    gallery: generateArchGallery("17-bungalow-at-ahmedabad", 50),
+    description: "Monolithic concrete architecture featuring dramatic arched fenestration.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Ahmedabad",
+    isFeatured: true
+  },
+  {
+    id: "18-bungalow-at-manjari",
+    title: "Bungalow at Manjari",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/18-bungalow-at-manjari/1.jpg",
+    heroImage: "/architecture/18-bungalow-at-manjari/1.jpg",
+    gallery: generateArchGallery("18-bungalow-at-manjari", 50),
+    description: "Warm, wood-clad architectural envelope offering a refined street presence.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Manjari, Pune",
+    isFeatured: false
+  },
+  {
+    id: "19-bungalow-at-kothrud-pune",
+    title: "Bungalow at Kothrud",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/19-bungalow-at-kothrud-pune/1.jpg",
+    heroImage: "/architecture/19-bungalow-at-kothrud-pune/1.jpg",
+    gallery: generateArchGallery("19-bungalow-at-kothrud-pune", 50),
+    description: "Tropical modernist residence utilizing warm terracotta palettes and deep overhangs.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Kothrud, Pune",
+    isFeatured: false
+  },
+  {
+    id: "20-bungalow-at-davangaon",
+    title: "Bungalow at Davangaon",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/20-bungalow-at-davangaon/1.jpg",
+    heroImage: "/architecture/20-bungalow-at-davangaon/1.jpg",
+    gallery: generateArchGallery("20-bungalow-at-davangaon", 50),
+    description: "Robust architectural form integrating tactile brickwork and brutalist concrete.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Davangaon",
+    isFeatured: false
+  },
+  {
+    id: "21-bungalow-at-karwadi",
+    title: "Bungalow at Karwdi",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/21-bungalow-at-karwadi/1.jpg",
+    heroImage: "/architecture/21-bungalow-at-karwadi/1.jpg",
+    gallery: generateArchGallery("21-bungalow-at-karwadi", 50),
+    description: "Luxury cantilevered architecture pushing the limits of structural daring.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Karwdi",
+    isFeatured: false
+  },
+  {
+    id: "22-farmhouse-at-bhor",
+    title: "Farmhouse at Bhor",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/22-farmhouse-at-bhor/1.jpg",
+    heroImage: "/architecture/22-farmhouse-at-bhor/1.jpg",
+    gallery: generateArchGallery("22-farmhouse-at-bhor", 50),
+    description: "Dynamic folded-roof structure acting as a beacon within a rural landscape.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Bhor",
+    isFeatured: true
+  },
+  {
+    id: "23-farmhouse-at-shirasgaon",
+    title: "Farmhouse at Shirasgaon",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/23-farmhouse-at-shirasgaon/1.jpg",
+    heroImage: "/architecture/23-farmhouse-at-shirasgaon/1.jpg",
+    gallery: generateArchGallery("23-farmhouse-at-shirasgaon", 50),
+    description: "Earth-toned monolithic volumes intersecting to create sheltered outdoor living spaces.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Shirasgaon",
+    isFeatured: false
+  },
+  {
+    id: "24-bungalow-at-viman-nagar",
+    title: "Bungalow at Viman Nagar",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/24-bungalow-at-viman-nagar/1.jpg",
+    heroImage: "/architecture/24-bungalow-at-viman-nagar/1.jpg",
+    gallery: generateArchGallery("24-bungalow-at-viman-nagar", 50),
+    description: "High-end urban residence enveloped in a kinetic privacy screen.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Viman Nagar",
+    isFeatured: false
+  },
+  {
+    id: "25-farmhouse-at-amber-lake-pimpoli",
+    title: "Farmhouse at Amber Lake, Pimpoli",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/25-farmhouse-at-amber-lake-pimpoli/1.jpg",
+    heroImage: "/architecture/25-farmhouse-at-amber-lake-pimpoli/1.jpg",
+    gallery: generateArchGallery("25-farmhouse-at-amber-lake-pimpoli", 50),
+    description: "Lakeside architectural intervention blurring the line between interior and landscape.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Pimpoli",
+    isFeatured: false
+  },
+  {
+    id: "26-farmhouse-at-pandharpur",
+    title: "Farmhouse at Pandharpur",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/26-farmhouse-at-pandharpur/1.jpg",
+    heroImage: "/architecture/26-farmhouse-at-pandharpur/1.jpg",
+    gallery: generateArchGallery("26-farmhouse-at-pandharpur", 50),
+    description: "Minimalist horizontal estate emphasizing natural light and open ventilation.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Pandharpur",
+    isFeatured: false
+  },
+  {
+    id: "27-marble-showroom-at-bibewadi",
+    title: "Marble Showroom at Bibwewadi",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/27-marble-showroom-at-bibewadi/1.jpg",
+    heroImage: "/architecture/27-marble-showroom-at-bibewadi/1.jpg",
+    gallery: generateArchGallery("27-marble-showroom-at-bibewadi", 50),
+    description: "Commercial showroom architecture acting as a blank canvas to highlight premium stone.",
+    specs: "COMMERCIAL // RETAIL",
+    location: "Bibwewadi",
+    isFeatured: false
+  },
+  {
+    id: "28-rest-house-at-gunjawane-dam",
+    title: "Rest House at Gunjavane Dam",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/28-rest-house-at-gunjawane-dam/1.jpg",
+    heroImage: "/architecture/28-rest-house-at-gunjawane-dam/1.jpg",
+    gallery: generateArchGallery("28-rest-house-at-gunjawane-dam", 50),
+    description: "Government hospitality project designed for minimal environmental impact.",
+    specs: "HOSPITALITY // REST HOUSE",
+    location: "Gunjavane Dam",
+    isFeatured: false
+  },
+  {
+    id: "29-bungalow-at-timber-market",
+    title: "Bungalow at Timber Market",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/29-bungalow-at-timber-market/1.jpg",
+    heroImage: "/architecture/29-bungalow-at-timber-market/1.jpg",
+    gallery: generateArchGallery("29-bungalow-at-timber-market", 50),
+    description: "Urban infill residence maximizing space and natural light within a dense context.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "30-ashoka-hotel-at-pravara-nagar",
+    title: "Ashoka Hotel at Pravara Nagar",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/30-ashoka-hotel-at-pravara-nagar/1.jpg",
+    heroImage: "/architecture/30-ashoka-hotel-at-pravara-nagar/1.jpg",
+    gallery: generateArchGallery("30-ashoka-hotel-at-pravara-nagar", 50),
+    description: "Mid-scale hospitality architecture focusing on efficient circulation and bold street presence.",
+    specs: "COMMERCIAL // HOTEL",
+    location: "Pravara Nagar",
+    isFeatured: true
+  },
+  {
+    id: "31-bungalow-at-pcmc",
+    title: "Bungalow at PCMC",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/31-bungalow-at-pcmc/1.jpg",
+    heroImage: "/architecture/31-bungalow-at-pcmc/1.jpg",
+    gallery: generateArchGallery("31-bungalow-at-pcmc", 50),
+    description: "Sophisticated multi-level residence utilizing timber louvers and crisp white planes.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "PCMC, Pune",
+    isFeatured: false
+  },
+  {
+    id: "32-desi-cow-conservation-centre",
+    title: "Desi Cow Conservation Center",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/32-desi-cow-conservation-centre/1.jpg",
+    heroImage: "/architecture/32-desi-cow-conservation-centre/1.jpg",
+    gallery: generateArchGallery("32-desi-cow-conservation-centre", 50),
+    description: "Vernacular architectural approach applied to a large-scale agricultural facility.",
+    specs: "INSTITUTIONAL // AGRICULTURAL",
+    location: "Maharashtra",
+    isFeatured: false
+  },
+  {
+    id: "33-boddhu-residence",
+    title: "Boddhu Residence",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/33-boddhu-residence/1.jpg",
+    heroImage: "/architecture/33-boddhu-residence/1.jpg",
+    gallery: generateArchGallery("33-boddhu-residence", 50),
+    description: "Vertical urban home maximizing footprint efficiency through staggered massing.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "34-religious-temple",
+    title: "Religious Temple",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/34-religious-temple/1.jpg",
+    heroImage: "/architecture/34-religious-temple/1.jpg",
+    gallery: generateArchGallery("34-religious-temple", 50),
+    description: "Traditional stone masonry techniques adapted for a serene community spiritual center.",
+    specs: "INSTITUTIONAL // RELIGIOUS",
+    location: "Pimple Saudagar",
+    isFeatured: false
+  },
+  {
+    id: "35-commercial-building-project-at-khadki-pune",
+    title: "Commercial Building Project",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/35-commercial-building-project-at-khadki-pune/1.jpg",
+    heroImage: "/architecture/35-commercial-building-project-at-khadki-pune/1.jpg",
+    gallery: generateArchGallery("35-commercial-building-project-at-khadki-pune", 50),
+    description: "Parametric facade design exploring geometric porosity and shading.",
+    specs: "COMMERCIAL // RETAIL",
+    location: "Khadki, Pune",
+    isFeatured: false
+  },
+  {
+    id: "36-svs-excellence-at-warje-pune",
+    title: "SVS Excellencia",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/36-svs-excellence-at-warje-pune/1.jpg",
+    heroImage: "/architecture/36-svs-excellence-at-warje-pune/1.jpg",
+    gallery: generateArchGallery("36-svs-excellence-at-warje-pune", 50),
+    description: "Premium housing project defined by sweeping curved balconies and elegant fenestration.",
+    specs: "RESIDENTIAL // HOUSING",
+    location: "Warje, Pune",
+    isFeatured: true
+  },
+  {
+    id: "37-it-park-proposal-wagholi-pune",
+    title: "IT Park Proposal",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/37-it-park-proposal-wagholi-pune/1.jpg",
+    heroImage: "/architecture/37-it-park-proposal-wagholi-pune/1.jpg",
+    gallery: generateArchGallery("37-it-park-proposal-wagholi-pune", 50),
+    description: "Master plan and architectural design for a sprawling, tech-focused corporate campus.",
+    specs: "COMMERCIAL // IT PARK",
+    location: "Wagholi, Pune",
+    isFeatured: false
+  },
+  {
+    id: "38-amber-saffron-residential-project",
+    title: "Amber Saffron Residential Project",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/38-amber-saffron-residential-project/1.jpg",
+    heroImage: "/architecture/38-amber-saffron-residential-project/1.jpg",
+    gallery: generateArchGallery("38-amber-saffron-residential-project", 50),
+    description: "Premium housing society highlighting vertical landscaping and elegant massing.",
+    specs: "RESIDENTIAL // HOUSING",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "39-bungalow-at-dhanu",
+    title: "Bungalow at Dahanu",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/39-bungalow-at-dhanu/1.jpg",
+    heroImage: "/architecture/39-bungalow-at-dhanu/1.jpg",
+    gallery: generateArchGallery("39-bungalow-at-dhanu", 50),
+    description: "Tropical modernism applied to a coastal bungalow featuring expansive sheltering roofs.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Dahanu",
+    isFeatured: false
+  },
+  {
+    id: "40-elevation-design-for-a-residentiat-building",
+    title: "Elevation Design for a Residential Building",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/40-elevation-design-for-a-residentiat-building/1.jpg",
+    heroImage: "/architecture/40-elevation-design-for-a-residentiat-building/1.jpg",
+    gallery: generateArchGallery("40-elevation-design-for-a-residentiat-building", 50),
+    description: "Fluid, sculptural approach to high-rise residential architecture.",
+    specs: "RESIDENTIAL // MID-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "41-resedential-elevation-design",
+    title: "Residential Elevation Design",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/41-resedential-elevation-design/1.jpg",
+    heroImage: "/architecture/41-resedential-elevation-design/1.jpg",
+    gallery: generateArchGallery("41-resedential-elevation-design", 50),
+    description: "Clean, orthogonal elevation study for a contemporary apartment block.",
+    specs: "RESIDENTIAL // HIGH-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "42-resedential-elevation-design-pune",
+    title: "Residential Elevation Design, Pune",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/42-resedential-elevation-design-pune/1.jpg",
+    heroImage: "/architecture/42-resedential-elevation-design-pune/1.jpg",
+    gallery: generateArchGallery("42-resedential-elevation-design-pune", 50),
+    description: "High-density residential tower featuring an articulated, dynamic facade rhythm.",
+    specs: "RESIDENTIAL // HIGH-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "43-residential-elevation-design-3",
+    title: "Residential Building Elevation",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/43-residential-elevation-design-3/1.jpg",
+    heroImage: "/architecture/43-residential-elevation-design-3/1.jpg",
+    gallery: generateArchGallery("43-residential-elevation-design-3", 50),
+    description: "Mid-rise apartment complex utilizing layered framing and deep shadows.",
+    specs: "RESIDENTIAL // MID-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "44-commercial-building-elevation-design",
+    title: "Commercial Building Elevation",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/44-commercial-building-elevation-design/1.jpg",
+    heroImage: "/architecture/44-commercial-building-elevation-design/1.jpg",
+    gallery: generateArchGallery("44-commercial-building-elevation-design", 50),
+    description: "Modern office building employing advanced glazing and solar control louvers.",
+    specs: "COMMERCIAL // OFFICE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "45-commercial-building-elevation",
+    title: "Commercial Building Elevation",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/45-commercial-building-elevation/1.jpg",
+    heroImage: "/architecture/45-commercial-building-elevation/1.jpg",
+    gallery: generateArchGallery("45-commercial-building-elevation", 50),
+    description: "Mixed-use commercial hub with a focus on retail visibility and corporate elegance.",
+    specs: "COMMERCIAL // MIXED-USE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "46-kundan-elevation-building",
+    title: "Kundan Commercial Building",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/46-kundan-elevation-building/1.jpg",
+    heroImage: "/architecture/46-kundan-elevation-building/1.jpg",
+    gallery: generateArchGallery("46-kundan-elevation-building", 50),
+    description: "Striking commercial architecture defined by sweeping curves and kinetic facades.",
+    specs: "COMMERCIAL // OFFICE",
+    location: "Pune",
+    isFeatured: true
+  },
+  {
+    id: "47-bungalow-at-shrirampur-01",
+    title: "Bungalow at Shrirampur",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/47-bungalow-at-shrirampur-01/1.jpg",
+    heroImage: "/architecture/47-bungalow-at-shrirampur-01/1.jpg",
+    gallery: generateArchGallery("47-bungalow-at-shrirampur-01", 50),
+    description: "Expansive luxury residence featuring integrated landscape and pool design.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Shrirampur",
+    isFeatured: false
+  },
+  {
+    id: "48-bungalow-at-beed",
+    title: "Bungalow at Beed",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/48-bungalow-at-beed/1.jpg",
+    heroImage: "/architecture/48-bungalow-at-beed/1.jpg",
+    gallery: generateArchGallery("48-bungalow-at-beed", 50),
+    description: "Neoclassical residential estate featuring ornate detailing and monumental scale.",
+    specs: "RESIDENTIAL // ESTATE",
+    location: "Beed",
+    isFeatured: false
+  },
+  {
+    id: "49-bungalow-at-baramati",
+    title: "Bungalow at Baramati",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/49-bungalow-at-baramati/1.jpg",
+    heroImage: "/architecture/49-bungalow-at-baramati/1.jpg",
+    gallery: generateArchGallery("49-bungalow-at-baramati", 50),
+    description: "Contemporary residence integrating floating volumes and extensive greenery.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Baramati",
+    isFeatured: false
+  },
+  {
+    id: "50-bungalow-at-satara",
+    title: "Bungalow at Satara",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/50-bungalow-at-satara/1.jpg",
+    heroImage: "/architecture/50-bungalow-at-satara/1.jpg",
+    gallery: generateArchGallery("50-bungalow-at-satara", 50),
+    description: "Modernist geometric composition balancing solid massing with light voids.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Satara",
+    isFeatured: false
+  },
+  {
+    id: "51-terrace-landscaping-at-pune",
+    title: "Terrace Landscaping at Pune",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/51-terrace-landscaping-at-pune/1.jpg",
+    heroImage: "/architecture/51-terrace-landscaping-at-pune/1.jpg",
+    gallery: generateArchGallery("51-terrace-landscaping-at-pune", 50),
+    description: "Urban rooftop oasis featuring bespoke pergolas and integrated water features.",
+    specs: "LANDSCAPE // RESIDENTIAL",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "52-container-cafe-at-manas-lake",
+    title: "Container Café at Manas Lake",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/52-container-cafe-at-manas-lake/1.jpg",
+    heroImage: "/architecture/52-container-cafe-at-manas-lake/1.jpg",
+    gallery: generateArchGallery("52-container-cafe-at-manas-lake", 50),
+    description: "Upcycled shipping container architecture forming a vibrant lakeside hospitality venue.",
+    specs: "COMMERCIAL // CAFE",
+    location: "Manas Lake",
+    isFeatured: true
+  },
+  {
+    id: "53-mr-barde-builders-housing-at-nagpur",
+    title: "Barde Builder Housing",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/53-mr-barde-builders-housing-at-nagpur/1.jpg",
+    heroImage: "/architecture/53-mr-barde-builders-housing-at-nagpur/1.jpg",
+    gallery: generateArchGallery("53-mr-barde-builders-housing-at-nagpur", 50),
+    description: "Premium multi-family housing development emphasizing community spaces and clean aesthetics.",
+    specs: "RESIDENTIAL // HOUSING",
+    location: "Nagpur",
+    isFeatured: false
+  },
+  {
+    id: "54-bungalow-at-deolali",
+    title: "Bungalow at Deolali",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/54-bungalow-at-deolali/1.jpg",
+    heroImage: "/architecture/54-bungalow-at-deolali/1.jpg",
+    gallery: generateArchGallery("54-bungalow-at-deolali", 50),
+    description: "Modern residential architecture blending clean geometry with natural context.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Deolali",
+    isFeatured: false
+  },
+  {
+    id: "55-residential-building-elevation",
+    title: "Residential Building Elevation",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/55-residential-building-elevation/1.jpg",
+    heroImage: "/architecture/55-residential-building-elevation/1.jpg",
+    gallery: generateArchGallery("55-residential-building-elevation", 50),
+    description: "High-rise residential elevation focusing on vertical proportion and material contrast.",
+    specs: "RESIDENTIAL // HIGH-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "56-residential-building-elevation2",
+    title: "Residential Building Elevation",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/56-residential-building-elevation2/1.jpg",
+    heroImage: "/architecture/56-residential-building-elevation2/1.jpg",
+    gallery: generateArchGallery("56-residential-building-elevation2", 50),
+    description: "Contemporary apartment complex featuring articulated balconies and passive shading.",
+    specs: "RESIDENTIAL // HIGH-RISE",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "57-residential-bungalow-pune",
+    title: "Residential Bungalow, Pune",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/57-residential-bungalow-pune/1.jpg",
+    heroImage: "/architecture/57-residential-bungalow-pune/1.jpg",
+    gallery: generateArchGallery("57-residential-bungalow-pune", 50),
+    description: "Bespoke residential envelope designed for climate responsiveness.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "58-residential-bungalow-pune2",
+    title: "Residential Bungalow, Pune",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/58-residential-bungalow-pune2/1.jpg",
+    heroImage: "/architecture/58-residential-bungalow-pune2/1.jpg",
+    gallery: generateArchGallery("58-residential-bungalow-pune2", 50),
+    description: "Luxury urban bungalow characterized by bold structural expressions.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Pune",
+    isFeatured: false
+  },
+  {
+    id: "59-restaurant-at-kedgaon-pune",
+    title: "Restaurant at Kedgaon, Pune",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/59-restaurant-at-kedgaon-pune/1.jpg",
+    heroImage: "/architecture/59-restaurant-at-kedgaon-pune/1.jpg",
+    gallery: generateArchGallery("59-restaurant-at-kedgaon-pune", 50),
+    description: "Hospitality architecture merging vernacular roof forms with modern transparency.",
+    specs: "COMMERCIAL // HOSPITALITY",
+    location: "Kedgaon, Pune",
+    isFeatured: false
+  },
+  {
+    id: "60-bungalow-at-shrirampur-02",
+    title: "Thorat Residence / Bungalow at Shrirampur",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/60-bungalow-at-shrirampur-02/1.jpg",
+    heroImage: "/architecture/60-bungalow-at-shrirampur-02/1.jpg",
+    gallery: generateArchGallery("60-bungalow-at-shrirampur-02", 50),
+    description: "Front elevation of a luxury residence featuring intricate jaali work and floating canopies.",
+    specs: "RESIDENTIAL // BUNGALOW",
+    location: "Shrirampur",
+    isFeatured: true
+  },
+  {
+    id: "61-sports-complex-at-hinjewadi",
+    title: "Sports Complex at Hinjewadi",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/61-sports-complex-at-hinjewadi/1.jpg",
+    heroImage: "/architecture/61-sports-complex-at-hinjewadi/1.jpg",
+    gallery: generateArchGallery("61-sports-complex-at-hinjewadi", 50),
+    description: "Dynamic athletic facility utilizing long-span structures and parametric facades.",
+    specs: "COMMERCIAL // SPORTS",
+    location: "Hinjewadi",
+    isFeatured: false
+  },
+  {
+    id: "62-muktangan-primary-school-pvg",
+    title: "Muktangan PVG School",
+    typology: "Architecture",
+    year: "2024",
+    image: "/architecture/62-muktangan-primary-school-pvg/1.jpg",
+    heroImage: "/architecture/62-muktangan-primary-school-pvg/1.jpg",
+    gallery: generateArchGallery("62-muktangan-primary-school-pvg", 50),
+    description: "Educational facility utilizing modular container construction for rapid deployment.",
+    specs: "INSTITUTIONAL // EDUCATION",
+    location: "Sadashiv Peth",
+    isFeatured: false
+  },
+  {
+    id: "63-mane-farmhouse",
+    title: "Mane Farmhouse",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/63-mane-farmhouse/1.jpg",
+    heroImage: "/architecture/63-mane-farmhouse/1.jpg",
+    gallery: generateArchGallery("63-mane-farmhouse", 50),
+    description: "Minimalist rural intervention emphasizing horizontal planes and deep overhangs.",
+    specs: "RESIDENTIAL // FARMHOUSE",
+    location: "Maharashtra",
+    isFeatured: false
+  },
+  {
+    id: "64-tukai-tekdi",
+    title: "Tukai Tekdi",
+    typology: "Architecture",
+    year: "2025",
+    image: "/architecture/64-tukai-tekdi/1.jpg",
+    heroImage: "/architecture/64-tukai-tekdi/1.jpg",
+    gallery: generateArchGallery("64-tukai-tekdi", 50),
+    description: "Masterplan and environmental intervention for a sprawling hillside development.",
+    specs: "CIVIC // MASTERPLAN",
+    location: "Maharashtra",
+    isFeatured: false
   }
 ];
+
+// Helper functions for data queries
+export function getAllProjects(): Project[] {
+  return projectsDB;
+}
+
+export function getProjectById(id: string): Project | undefined {
+  return projectsDB.find((project) => project.id === id);
+}
+
+export function getProjectsByTypology(typology: string): Project[] {
+  return projectsDB.filter(
+    (project) => project.typology.toLowerCase() === typology.toLowerCase()
+  );
+}
