@@ -148,7 +148,7 @@ export default function NewsPage() {
                     {/* Replace the src with the actual YouTube embed link if you have it */}
                     <iframe 
                       className="w-full h-full"
-                      src="  https://youtu.be/ilZ2RrfCfao?si=3e3-fOmiTqm3GIg7" 
+                      src="  https://youtu.be/ilZ2RrfCfao?si=1ARKIv6rxLqVDV_o" 
                       title="Aaj Tak Interview" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
