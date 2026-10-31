@@ -160,9 +160,9 @@ export default function InteriorProjectDetails() {
         </div>
       )}
 
-      {/* 4. ELEGANT RETURN BUTTON */}
+      {/* 4. ELEGANT RETURN BUTTON (UPDATED ROUTE) */}
       <div className="w-full pb-20 md:pb-32 flex justify-center">
-        <Link href="/projects/interior-design" className="group flex flex-col items-center gap-4 outline-none">
+        <Link href="/projects/interior" className="group flex flex-col items-center gap-4 outline-none">
           <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#86868B] uppercase group-hover:text-[#1D1D1F] transition-colors duration-300">
             Return to Archive
           </span>
@@ -185,13 +185,13 @@ export default function InteriorProjectDetails() {
             className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-12 lg:p-20 cursor-zoom-out"
             onClick={() => setSelectedImage(null)}
           >
-            {/* 🚀 Layer 1: The Glass Blur (Highly transparent but deeply blurred) */}
+            {/* Layer 1: The Glass Blur */}
             <div className="absolute inset-0 bg-[#1D1D1F]/40 backdrop-blur-3xl" />
             
-            {/* 🚀 Layer 2: The Cinematic Vignette (Focuses light on the center) */}
+            {/* Layer 2: The Cinematic Vignette */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
 
-            {/* 🚀 Layer 3: UX Typography Hint */}
+            {/* Layer 3: UX Typography Hint */}
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -201,7 +201,7 @@ export default function InteriorProjectDetails() {
               Click anywhere to close
             </motion.div>
 
-            {/* 🚀 Layer 4: Elegant Frosted Close Button */}
+            {/* Layer 4: Elegant Frosted Close Button */}
             <button 
               className="absolute top-6 right-6 md:top-10 md:right-12 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/15 text-white/80 hover:text-white transition-all duration-300 z-50 outline-none hover:scale-105 active:scale-95 shadow-xl"
               onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
@@ -212,7 +212,7 @@ export default function InteriorProjectDetails() {
               </svg>
             </button>
 
-            {/* 🚀 Layer 5: The Floating Image (With cinematic shadow and glass ring) */}
+            {/* Layer 5: The Floating Image */}
             <motion.img
               initial={{ scale: 0.9, opacity: 0, y: 40 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}

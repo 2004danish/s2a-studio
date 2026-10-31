@@ -1,26 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
-
-const heroImages = [
-  "/hero images/bungalow-kekarav.jpg", 
-  "/turnkeyworks/bungalow-sangali.jpg",
-  "/turnkeyworks/encore-boutique-resort.jpg",
-  "/turnkeyworks/golf-resort.jpg"
-];
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -38,60 +22,25 @@ export default function Hero() {
   return (
     <section ref={containerRef} className="relative w-full h-[300vh] bg-[#F5F5F7] text-[#1D1D1F]">
       
-      {/* IMMERSIVE FRAME WRAPPER - Switched to 100dvh for mobile browser fix */}
+      {/* IMMERSIVE FRAME WRAPPER */}
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col pt-20 md:pt-24 pb-3 md:pb-6 px-3 md:px-6 overflow-hidden">
 
         <div className="relative w-full h-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.1)] z-10 border border-[#1D1D1F]/5 bg-[#1D1D1F]">
           
-          {/* DRONE VIDEO OVERLAY */}
+          {/* PURE DRONE VIDEO BACKGROUND */}
           <video 
             src="/hero video/3ddronevideo.mp4"
             autoPlay 
             loop 
             muted 
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-80 z-30 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover z-10"
           />
 
-          {/* IMAGE SEQUENCE */}
-          {heroImages.map((src, index) => (
-            <motion.img 
-              key={src}
-              src={src}
-              alt="S2A Architectural Masterpiece" 
-              className="absolute inset-0 w-full h-full object-cover"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ 
-                opacity: index === currentIndex ? 1 : 0,
-                scale: index === currentIndex ? 1 : 1.05,
-                zIndex: index === currentIndex ? 20 : 10
-              }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-            />
-          ))}
+          {/* Elegant gradient optimized for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none z-20" />
 
-          {/* Gradient optimized for text readability on both mobile and desktop */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 pointer-events-none z-40" />
-
-          {/* FLOATING FAST-TRAVEL CARD */}
-          <Link 
-            href="/projects" 
-            className="absolute top-4 right-4 md:top-8 md:right-8 lg:top-10 lg:right-10 z-50 group"
-          >
-            <div className="backdrop-blur-2xl backdrop-saturate-200 bg-white/10 hover:bg-white/20 border border-white/20 p-1.5 pr-4 md:p-2 md:pr-6 rounded-full flex items-center gap-2 md:gap-4 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
-              <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center group-hover:scale-95 transition-transform duration-500">
-                <svg className="w-3.5 h-3.5 md:w-5 md:h-5 text-[#1D1D1F] translate-x-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="text-[7px] md:text-[9px] font-mono tracking-[0.2em] text-white/70 uppercase">Explore</span>
-                <span className="text-[9px] md:text-[11px] font-bold tracking-[0.1em] text-white uppercase mt-0.5">All Projects</span>
-              </div>
-            </div>
-          </Link>
-
-          {/* HUD OVERLAY - Hidden on small mobile to reduce clutter */}
+          {/* HUD OVERLAY */}
           <div className="hidden sm:flex absolute bottom-8 left-8 md:bottom-12 md:left-12 flex-col gap-1.5 z-50 text-[9px] md:text-[10px] font-mono tracking-[0.2em] uppercase text-white drop-shadow-md">
             <span>21.1458° N, 79.0882° E</span>
             <span className="text-white/70">Master Planning & Architecture</span>

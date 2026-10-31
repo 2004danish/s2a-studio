@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // 🚀 Premium Glass-Shrink Logic (No vanishing, just elegant morphing)
+  // 🚀 Premium Glass-Shrink Logic
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
@@ -27,17 +27,20 @@ export default function Navbar() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isMobileMenuOpen]);
 
+  // 🚀 UPDATED: Exact Sitemap from Live Website
   const navLinks = [
+    { name: "About Studio", path: "/about" },
+    { name: "Services", path: "/services" },
     { name: "Projects", path: "/projects", hasDropdown: true },
-    { name: "Studio", path: "/studio" },
-    { name: "Recognition", path: "/recognition" },
-    { name: "Journal", path: "/journal" },
-    { name: "Careers", path: "/careers" },
+    { name: "News", path: "/news" },
+    { name: "S2A Visualization", path: "/visualization" },
+    { name: "Clients", path: "/clients" },
+    { name: "Career", path: "/career" },
   ];
 
   const projectSubLinks = [
     { name: "Architecture", path: "/projects/architecture" },
-    { name: "Interior Design", path: "/projects/interior-design" },
+    { name: "Interior", path: "/projects/interior" },
     { name: "Competitions", path: "/projects/competitions" },
   ];
 
@@ -63,7 +66,7 @@ export default function Navbar() {
           </Link>
 
           {/* 2. CENTERED NAVIGATION (Desktop Only) */}
-          <nav className="hidden lg:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2 z-[6001]">
+          <nav className="hidden lg:flex items-center justify-center gap-4 xl:gap-8 absolute left-1/2 -translate-x-1/2 z-[6001]">
             {navLinks.map((item) => {
               const isActive = pathname.startsWith(item.path);
               
@@ -76,7 +79,7 @@ export default function Navbar() {
                 >
                   <Link 
                     href={item.path} 
-                    className={`group text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors duration-300 flex items-center gap-1.5 outline-none ${
+                    className={`group text-[10px] xl:text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors duration-300 flex items-center gap-1.5 outline-none ${
                       isActive ? "text-[#1D1D1F]" : "text-[#555555] hover:text-[#1D1D1F]"
                     }`}
                   >

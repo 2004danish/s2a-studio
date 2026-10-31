@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   // 🚀 FEATURE: Live Studio Time (Pune/IST)
@@ -18,7 +19,7 @@ export default function Footer() {
       setTime(formatter.format(new Date()));
     };
     updateTime();
-    const interval = setInterval(updateTime, 10000); // Update every 10s
+    const interval = setInterval(updateTime, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -27,60 +28,74 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#111111] text-[#F5F5F7] flex flex-col font-sans rounded-t-[2rem] md:rounded-t-[3rem] relative z-50 overflow-hidden mt-20">
-      
-      {/* Subtle Top Border Glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5F5F7]/20 to-transparent" />
-
-      <div className="max-w-[1800px] mx-auto w-full px-5 sm:px-6 md:px-12 lg:px-24 pt-20 sm:pt-28 md:pt-36 pb-8 flex flex-col">
+    <footer className="w-full bg-white text-[#1D1D1F] border-t border-[#1D1D1F]/10 pt-16 md:pt-24 pb-8 flex flex-col font-sans relative z-50">
+      <div className="max-w-[1800px] mx-auto w-full px-6 md:px-12 lg:px-24">
         
         {/* ================= TOP: CINEMATIC CTA ================= */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-8 mb-20 md:mb-32">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 pb-16 md:pb-20 border-b border-[#1D1D1F]/10">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-tight leading-[1.05] text-[#1D1D1F]"
+          >
+            Let's engineer <br className="hidden sm:block" />
+            <span className="text-[#86868B]">the vision.</span>
+          </motion.h2>
           
-          <div className="flex flex-col w-full">
-            <h2 className="text-[clamp(3.5rem,8vw,9rem)] font-medium tracking-[-0.04em] leading-[0.9] text-[#F5F5F7] mb-6 md:mb-10">
-              Let's engineer <br />
-              <span className="text-[#555555]">the vision.</span>
-            </h2>
-            
-            {/* Elegant Arrow Link */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
             <a 
               href="mailto:hello@s2astudio.in" 
-              className="group flex items-center gap-4 md:gap-6 w-fit outline-none"
+              className="group relative inline-flex items-center gap-4 outline-none rounded-full bg-[#1D1D1F] hover:bg-[#333336] shadow-sm hover:shadow-md pr-2 pl-5 sm:pl-6 py-1.5 transition-all duration-300 ease-out"
             >
-              <span className="text-xl sm:text-3xl md:text-5xl font-light tracking-tight text-[#F5F5F7] group-hover:text-[#86868B] transition-colors duration-500">
+              <span className="text-sm md:text-base font-medium tracking-wide text-[#F5F5F7]">
                 hello@s2astudio.in
               </span>
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#F5F5F7]/20 flex items-center justify-center group-hover:bg-[#F5F5F7] group-hover:border-[#F5F5F7] transition-all duration-500">
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-[#F5F5F7] group-hover:text-[#111111] -rotate-45 group-hover:rotate-0 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F5F5F7] flex items-center justify-center scale-95 group-hover:scale-100 transition-transform duration-300">
+                <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#1D1D1F] -rotate-45 group-hover:rotate-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </div>
             </a>
-          </div>
-
+          </motion.div>
         </div>
 
-        {/* ================= MIDDLE: ARCHITECTURAL GRID ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-12 border-y border-[#F5F5F7]/10">
+        {/* ================= MIDDLE: DIRECTORY GRID ================= */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 pt-12 md:pt-16 pb-16">
           
-          {/* Column 1: Studio Details */}
-          <div className="md:col-span-4 flex flex-col gap-10 py-10 md:py-16 md:pr-10 border-b md:border-b-0 md:border-r border-[#F5F5F7]/10">
-            <div className="flex flex-col gap-3">
-              <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#555555]">Headquarters</h4>
-              <p className="text-sm md:text-base text-[#F5F5F7] font-light leading-relaxed">
-                S2A Studio <br />
-                Pune, Maharashtra<br />
-                India
-              </p>
-              <a href="https://maps.google.com/?q=18.532675,73.8462706" target="_blank" rel="noreferrer" className="text-xs font-semibold text-[#86868B] hover:text-[#F5F5F7] transition-colors w-fit mt-2 outline-none">
-                Get Directions ↗
-              </a>
-            </div>
+          {/* HQ Info */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-4"
+          >
+            <h4 className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#86868B]">Headquarters</h4>
+            <p className="text-sm md:text-base font-medium text-[#1D1D1F] leading-relaxed">
+              S2A Studio <br />
+              Pune, Maharashtra<br />
+              India
+            </p>
+          </motion.div>
 
-            <div className="flex flex-col gap-3">
-              <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#555555]">Local Time</h4>
-              <p className="text-sm md:text-base text-[#F5F5F7] font-light flex items-center gap-3">
+          {/* Time & Contact */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-10"
+          >
+            <div className="flex flex-col gap-4">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#86868B]">Local Time</h4>
+              <p className="text-sm md:text-base font-medium text-[#1D1D1F] flex items-center gap-3">
                 {time ? `${time} IST` : "Loading..."}
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -88,67 +103,82 @@ export default function Footer() {
                 </span>
               </p>
             </div>
-            
-            <div className="flex flex-col gap-3">
-              <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#555555]">Inquiries</h4>
-              <p className="text-sm md:text-base text-[#F5F5F7] font-light">
+            <div className="flex flex-col gap-4 hidden md:flex">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#86868B]">Inquiries</h4>
+              <a href="tel:+919876543210" className="text-sm md:text-base font-medium text-[#1D1D1F] hover:text-[#86868B] transition-colors outline-none w-fit">
                 +91 98765 43210
-              </p>
+              </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Column 2: Directory */}
-          <div className="md:col-span-3 flex flex-col py-10 md:py-16 md:px-10 border-b md:border-b-0 md:border-r border-[#F5F5F7]/10">
-            <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#555555] mb-6">Directory</h4>
-            <ul className="flex flex-col gap-4 text-sm md:text-base font-light">
-              <li><Link href="/projects/architecture" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">Architecture</Link></li>
-              <li><Link href="/projects/interior-design" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">Interior Design</Link></li>
-              <li><Link href="/projects/competitions" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">Competitions</Link></li>
-              <li className="pt-4 mt-2 border-t border-[#F5F5F7]/10"><Link href="/studio" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">The Studio</Link></li>
-              <li><Link href="/recognition" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">Recognition</Link></li>
-              <li><Link href="/careers" className="text-[#F5F5F7] hover:text-[#86868B] transition-colors outline-none">Careers</Link></li>
+          {/* Portfolio Links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-4"
+          >
+            <h4 className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#86868B]">Projects</h4>
+            <ul className="flex flex-col gap-3 text-sm md:text-base font-medium text-[#1D1D1F]">
+              <li><Link href="/projects/architecture" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Architecture</Link></li>
+              <li><Link href="/projects/interior" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Interior</Link></li>
+              <li><Link href="/projects/competitions" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Competitions</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Column 3: Minimalist Map */}
-          <div className="md:col-span-5 h-[300px] md:h-auto w-full relative group overflow-hidden bg-[#0a0a0a]">
-            <iframe
-              src="https://maps.google.com/maps?q=18.532675,73.8462706&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              className="absolute inset-0 w-full h-full border-0 transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 opacity-60"
-              style={{ filter: "grayscale(100%) invert(100%) contrast(120%)" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            {/* Cinematic Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-[#111111] pointer-events-none opacity-80 md:hidden" />
-          </div>
+          {/* Firm Links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-4"
+          >
+            <h4 className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#86868B]">Firm</h4>
+            <ul className="flex flex-col gap-3 text-sm md:text-base font-medium text-[#1D1D1F]">
+              <li><Link href="/about" className="hover:text-[#86868B] transition-colors outline-none py-1 block">About Studio</Link></li>
+              <li><Link href="/services" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Services</Link></li>
+              <li><Link href="/visualization" className="hover:text-[#86868B] transition-colors outline-none py-1 block">S2A Visualization</Link></li>
+              <li><Link href="/news" className="hover:text-[#86868B] transition-colors outline-none py-1 block">News</Link></li>
+              <li><Link href="/clients" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Clients</Link></li>
+              <li><Link href="/career" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Career</Link></li>
+              <li><Link href="/contact" className="hover:text-[#86868B] transition-colors outline-none py-1 block">Contact</Link></li>
+            </ul>
+          </motion.div>
 
         </div>
 
         {/* ================= BOTTOM: IMPRINT & SOCIALS ================= */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 pb-4 text-center md:text-left">
-           <p className="text-[10px] font-mono uppercase tracking-widest text-[#555555]">
-             © {new Date().getFullYear()} S2A Studio. All rights reserved.
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-col md:flex-row justify-between items-center gap-6 pt-6 border-t border-[#1D1D1F]/10 text-center md:text-left"
+        >
+           <p className="text-[11px] md:text-xs font-mono font-medium uppercase tracking-widest text-[#86868B]">
+             © {new Date().getFullYear()} S2A Studio.
            </p>
-           
-           <div className="flex items-center gap-8 text-[11px] font-semibold uppercase tracking-widest text-[#F5F5F7]">
-             <a href="#" className="hover:text-[#86868B] transition-colors outline-none">Instagram</a>
-             <a href="#" className="hover:text-[#86868B] transition-colors outline-none">LinkedIn</a>
-             <a href="#" className="hover:text-[#86868B] transition-colors outline-none">Twitter</a>
+
+           <div className="flex items-center gap-6 text-[11px] md:text-xs font-mono font-bold uppercase tracking-widest text-[#1D1D1F]">
+             <a href="#" className="hover:text-[#86868B] transition-colors outline-none py-2 px-1">Instagram</a>
+             <a href="#" className="hover:text-[#86868B] transition-colors outline-none py-2 px-1">LinkedIn</a>
+             <a href="#" className="hover:text-[#86868B] transition-colors outline-none py-2 px-1">X (Twitter)</a>
            </div>
 
-           {/* Back to top button */}
            <button 
              onClick={scrollToTop}
-             className="text-[10px] font-mono uppercase tracking-widest text-[#86868B] hover:text-[#F5F5F7] transition-colors outline-none flex items-center gap-2"
+             className="group text-[11px] md:text-xs font-mono font-bold uppercase tracking-widest text-[#86868B] hover:text-[#1D1D1F] transition-colors outline-none flex items-center gap-3 py-2"
            >
              Back to Top 
-             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-             </svg>
+             <div className="w-6 h-6 rounded-full bg-[#F5F5F7] flex items-center justify-center group-hover:bg-[#E8E8EA] transition-colors">
+               <svg className="w-3 h-3 text-[#1D1D1F] group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+               </svg>
+             </div>
            </button>
-        </div>
+        </motion.div>
 
       </div>
     </footer>

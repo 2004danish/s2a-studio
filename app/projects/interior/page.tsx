@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-// Strict relative path to fix the import error
+// 🚀 FIXED: Correct relative path (2 levels up to reach app/data)
 import { projectsDB } from "../../data/projectsDB"; 
 
 export default function InteriorArchive() {
@@ -59,8 +59,9 @@ export default function InteriorArchive() {
                 className={`flex flex-col ${isHero ? 'md:col-span-2' : 'col-span-1'}`}
               >
                 <motion.div whileHover="hover" initial="initial" className="flex flex-col w-full h-full cursor-pointer group">
-                  {/* Dynamic Link to the subpage */}
-                  <Link href={`/projects/interior-design/${project.id}`} className="flex flex-col h-full w-full outline-none">
+                  
+                  {/* 🚀 UPDATED Dynamic Link to the subpage matching the new folder name */}
+                  <Link href={`/projects/interior/${project.id}`} className="flex flex-col h-full w-full outline-none">
                     
                     <div className={`w-full relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-[#E8E8EA] mb-4 ${isHero ? 'aspect-[4/3] md:aspect-[21/9]' : 'aspect-[4/5] md:aspect-[4/3]'}`}>
                       <motion.img 
