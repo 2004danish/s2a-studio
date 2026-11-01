@@ -5,8 +5,17 @@ import { motion } from "framer-motion";
 export default function ServicesPage() {
   const services = [
     {
+      id: "architecture",
+      title: "Architecture",
+      description: "Bringing the avant-garde tradition in the architectural concept, we at S2A Studio provide residential, commercial, hospitality and institutional architecture services to our clients with a lot of innovations as well as creativity. We help in providing the materials as well as contractors, vendors and helps in building your structure from scratch to the completion.",
+      description2: "We manage the planning, management as well as the execution of your building. In case of construction of new premises we undertake services like liasoning of said property, providing architectural services, the process of conversion of agricultural land to non agricultural land, obtaining the completion certificate to handing over the keys of the constructed property to the clients.",
+      image: "/services/architecture.jpg",
+      link: "/projects/architecture",
+      linkText: "View Architecture Archive"
+    },
+    {
       id: "interior-design",
-      title: "Interior Design & Turnkey",
+      title: "Interior Design",
       description: "It's the interiors that define a perfect home these days. Whether a large property or a commercial space, it is the interior that provides and adds an asset for residential projects. At S2A Studio, we make interior spaces functional, safe, and beautiful by determining space requirements and selecting decorative items, such as colors, lighting, and materials.",
       description2: "We work on a concept basis, mostly derived from nature, reflecting our expertise and the client's requirements. In turnkey projects, the entire scope of work including material, labour, designing & execution is handled by us.",
       image: "/services/interior-design.jpg",
@@ -46,7 +55,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] pt-32 md:pt-40 pb-24 md:pb-40 selection:bg-[#1D1D1F] selection:text-white overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         
-        {/* 1. EDITORIAL HEADER */}
+        {/* EDITORIAL HEADER */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,10 +79,9 @@ export default function ServicesPage() {
           </div>
         </motion.div>
 
-        {/* 2. STAGGERED EDITORIAL SCROLL */}
+        {/* STAGGERED EDITORIAL SCROLL */}
         <div className="flex flex-col gap-32 md:gap-48">
           {services.map((service, index) => {
-            // Determine if the image should be on the left (even index) or right (odd index)
             const isImageLeft = index % 2 === 0;
 
             return (
@@ -88,7 +96,7 @@ export default function ServicesPage() {
                 
                 {/* Image Section */}
                 <div className="w-full lg:w-1/2">
-                  <div className="w-full aspect-[4/3] md:aspect-[4/5] lg:aspect-square bg-[#E8E8EA] rounded-[2rem] overflow-hidden relative group">
+                  <div className="w-full aspect-[4/3] md:aspect-[4/5] lg:aspect-square bg-[#E8E8EA] rounded-[2rem] overflow-hidden relative group shadow-sm">
                     <motion.img 
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -138,7 +146,6 @@ export default function ServicesPage() {
             );
           })}
         </div>
-
       </div>
     </main>
   );
